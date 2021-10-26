@@ -7,7 +7,7 @@ SRC = Base58.cpp IntGroup.cpp Main.cpp Bloom.cpp Random.cpp \
       Timer.cpp Int.cpp IntMod.cpp Point.cpp SECP256K1.cpp \
       Rotor.cpp GPU/GPUGenerate.cpp hash/ripemd160.cpp \
       hash/sha256.cpp hash/sha512.cpp hash/ripemd160_sse.cpp \
-      hash/sha256_sse.cpp hash/keccak160.cpp GmpUtil.cpp CmdParse.cpp
+      hash/sha256_sse.cpp hash/keccak160.cpp Bech32.cpp
 
 OBJDIR = obj
 
@@ -18,7 +18,7 @@ OBJET = $(addprefix $(OBJDIR)/, \
         IntMod.o Point.o SECP256K1.o Rotor.o GPU/GPUGenerate.o \
         hash/ripemd160.o hash/sha256.o hash/sha512.o \
         hash/ripemd160_sse.o hash/sha256_sse.o hash/keccak160.o \
-        GPU/GPUEngine.o GmpUtil.o CmdParse.o)
+        GPU/GPUEngine.o Bech32.o)
 
 else
 
@@ -26,8 +26,7 @@ OBJET = $(addprefix $(OBJDIR)/, \
         Base58.o IntGroup.o Main.o Bloom.o Random.o Timer.o Int.o \
         IntMod.o Point.o SECP256K1.o Rotor.o GPU/GPUGenerate.o \
         hash/ripemd160.o hash/sha256.o hash/sha512.o \
-        hash/ripemd160_sse.o hash/sha256_sse.o hash/keccak160.o \
-        GmpUtil.o CmdParse.o)
+        hash/ripemd160_sse.o hash/sha256_sse.o hash/keccak160.o Bech32.o)
 
 endif
 
@@ -44,14 +43,14 @@ CXXFLAGS   = -DWITHGPU -m64  -mssse3 -Wno-write-strings -g -I. -I$(CUDA)/include
 else
 CXXFLAGS   =  -DWITHGPU -m64 -mssse3 -Wno-write-strings -O2 -I. -I$(CUDA)/include
 endif
-LFLAGS     = -lgmp -lpthread -L$(CUDA)/lib64 -lcudart
+LFLAGS     = -lpthread -L$(CUDA)/lib64 -lcudart
 else
 ifdef debug
 CXXFLAGS   = -m64 -mssse3 -Wno-write-strings -g -I. -I$(CUDA)/include
 else
 CXXFLAGS   =  -m64 -mssse3 -Wno-write-strings -O2 -I. -I$(CUDA)/include
 endif
-LFLAGS     = -lgmp -lpthread
+LFLAGS     = -lpthread
 endif
 
 
@@ -92,5 +91,4 @@ clean:
 	@rm -f obj/*.o
 	@rm -f obj/GPU/*.o
 	@rm -f obj/hash/*.o
-
 
