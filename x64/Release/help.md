@@ -85,3 +85,25 @@ Where TARGETS is one address/xpont, or multiple hashes/xpoints file
 -r, --rkey Rkey                          : Reloads random start Private key every (-r 10 = 10.000.000.000), default is disabled
 -v, --version                            : Show version
 ```
+##### Linux
+ - Edit the makefile and set up the appropriate CUDA SDK and compiler paths for nvcc. Or pass them as variables to `make` command.
+ - Install libgmp: ```sudo apt install -y libgmp-dev```
+
+    ```make
+    CUDA       = /usr/local/cuda-11.0
+    CXXCUDA    = /usr/bin/g++
+    ```
+ - To build CPU-only version (without CUDA support):
+    ```sh
+    $ make all
+    ```
+ - To build with CUDA: pass CCAP value according to your GPU compute capability
+    ```sh
+    $ cd Rotor-Cuda
+    $ make gpu=1 CCAP=75 all
+    ```
+#### BinSort
+```sh
+$ cd BinSort
+$ make
+```
