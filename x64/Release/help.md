@@ -20,19 +20,24 @@
 - For Multi GPUs use ```Rotor-Cuda.exe -t 0 --gpui 0,1,2 --gpux 256,256,256,256,256,256 -m addresses --coin BTC --range 1:1fffffffff -i test.bin```
 - If you have a weak GPU or driver error, remove **--gpux 256,256** the Grid will automatically assign.
 
+#### Python scripts
+```
+python -m pip install base58
+```
+
 ## addresses_to_hash160.py
 ```
-python3 addresses_to_hash160.py addresses_in.txt hash160_out.bin
+python addresses_to_hash160.py addresses_in.txt hash160_out.bin
 ```
 
 ## pubkeys_to_xpoint.py
 ```
-python3 pubkeys_to_xpoint.py pubkeys_in.txt xpoints_out.bin
+python pubkeys_to_xpoint.py pubkeys_in.txt xpoints_out.bin
 ```
 
 ## eth_addresses_to_bin.py
 ```
-python3 eth_addresses_to_bin.py eth_addresses_in.txt eth_addresses_out.bin
+python eth_addresses_to_bin.py eth_addresses_in.txt eth_addresses_out.bin
 ```
 
 ## BinSort
