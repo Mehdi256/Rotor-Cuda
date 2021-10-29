@@ -864,7 +864,7 @@ void Rotor::getGPUStartingKeys(Int & tRangeStart, Int & tRangeEnd, int groupSize
 			
 			keys[i].SetBase16(cstr2);
 
-			printf("\r  [Thead: %d]    [%s] ", i, keys[i].GetBase16().c_str());
+			printf("\r  [Thread: %d]    [%s] ", i, keys[i].GetBase16().c_str());
 			rhex.SetBase16(cstr2);
 			
 			Int k(keys + i);
