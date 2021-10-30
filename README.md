@@ -9,7 +9,7 @@ A lot of gratitude to all the developers whose codes has been used here.
 ### CPU Options: 
 - **-t ?** how many cpu cores to use? (1-128 max) 
 - **-r ?** How many billions to update starting Private Keys? (1-100)
-- How to create databases, additional parameters [**Help page**](https://github.com/phrutis/Rotor-Cuda/blob/main/x64/Release/help.md)
+- How to create databases, additional parameters [**Help page**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Help.md)
 ### CPU Bitcoin Multi Address mode:
 - Test: ```Rotor-Cuda.exe -t 1 -m addresses --coin BTC --range 1:1fffffffff -i puzzle_1_37_hash160_out_sorted.bin```
 - Normal: ```Rotor-Cuda.exe -t 1 -m addresses --coin BTC --range 1000000:fffffffffffffff -i test.bin```
@@ -158,7 +158,7 @@ C:\Users\user>Rotor-Cuda.exe -t 6 -m addresses --coin BTC -i test.bin -r 1
 - Test: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC --range 8000000000:ffffffffff a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4```
 - Normal: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC --range 1:fffffffffffffffff a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4```
 - Random: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC -r 250 a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4```
-- How to create databases, additional parameters [**Help page**](https://github.com/phrutis/Rotor-Cuda/blob/main/x64/Release/help.md)
+- How to create databases, additional parameters [**Help page**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Help.md)
 ### Example Normal (range) mode:
 ```
 C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC --range 1:fffffffffffffffff a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4
