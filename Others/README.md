@@ -9,7 +9,7 @@
 - Next, you need to sort the base hex160.bin
 - CMD: ```BinSort.exe 20 hex160.bin hex160sorted.bin```
 - Or another program CMD: ```RMD160-Sort.exe hex160.bin hex160sorted.bin```
-- For the test, you can use a ready-made base puzzle_1_37_hash160_out_sorted.bin
+- For the test, you can use a ready-made base [puzzle_1_37_hash160_out_sorted.bin](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/puzzle_1_37_hash160_out_sorted.bin)
 
 ## How to create a base of Ethereum addresses 
 
@@ -18,7 +18,7 @@
 - Next, you need to sort the base eth_addresses_out.bin
 - CMD: ```BinSort.exe 20 eth_addresses_out.bin eth_addresses_sotrted.bin```
 - Or another program CMD: ```RMD160-Sort.exe eth_addresses_out.bin eth_addresses_sorted.bin```
-- For the test, you can use a ready-made base puzzle_1_37_addresses_eth_sorted.bin
+- For the test, you can use a ready-made base [puzzle_1_37_addresses_eth_sorted.bin](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/puzzle_1_37_addresses_eth_sorted.bin)
 
 ## How to create a base of Public keys for Multi X Points mode
 
@@ -31,7 +31,7 @@
 - If the program finds such a public key, it will give a compressed address. Using the found private key, generate a positive uncompressed address
 - Convert public keys (02,03,04) use Python: ```python pubkeys_to_xpoint.py pubkeys_in.txt xpoints_out.bin```
 - Make sure to sort the base CMD: ```BinSort.exe 32 xpoints_out.bin Xpoints_Sorted.bin```
-- For the test, you can use a ready-made base xpoints_1_37_out_sorted.bin
+- For the test, you can use a ready-made base [xpoints_1_37_out_sorted.bin](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/xpoints_1_37_out_sorted.bin)
 ---
 - It takes a long time to get public addresses from the blockchain. 
 - It took me a week to get all public keys from [1 BTC up](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Pubkeys1up.txt). It will take a month to get from [0.1 BTC up](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Pubkeys0.1up.txt).
