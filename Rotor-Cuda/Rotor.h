@@ -36,11 +36,11 @@ class Rotor
 public:
 
 	Rotor(const std::string& inputFile, int compMode, int searchMode, int coinType, bool useGpu, 
-		const std::string& outputFile, bool useSSE, uint32_t maxFound, uint64_t rKey, 
+		const std::string& outputFile, bool useSSE, uint32_t maxFound, uint64_t rKey, int nbit2,
 		const std::string& rangeStart, const std::string& rangeEnd, bool& should_exit);
 
 	Rotor(const std::vector<unsigned char>& hashORxpoint, int compMode, int searchMode, int coinType, 
-		bool useGpu, const std::string& outputFile, bool useSSE, uint32_t maxFound, uint64_t rKey, 
+		bool useGpu, const std::string& outputFile, bool useSSE, uint32_t maxFound, uint64_t rKey, int nbit2,
 		const std::string& rangeStart, const std::string& rangeEnd, bool& should_exit);
 
 	~Rotor();
@@ -118,6 +118,7 @@ private:
 
 	uint32_t maxFound;
 	uint64_t rKey;
+	int nbit2;
 	uint64_t lastrKey;
 	uint64_t rKeyCount2;
 	int corres;
