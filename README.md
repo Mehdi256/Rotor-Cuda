@@ -1,4 +1,4 @@
-# Rotor-Cuda v1.01
+# Rotor-Cuda v1.02
 
 This is a modified version of KeyHunt v1.7 by [kanhavishva](https://github.com/kanhavishva/KeyHunt-Cuda).
 A lot of gratitude to all the developers whose codes has been used here.
@@ -35,9 +35,9 @@ A lot of gratitude to all the developers whose codes has been used here.
 
 ### Example range mode (6 cores):
 ```
-C:\Users\user>Rotor-Cuda.exe -t 6 -m addresses --coin BTC --range 1000000:fffffffffffff -i test.bin
+C:\Users\user>Rotor-Cuda.exe -t 6 -m addresses --coin BTC --range 1000000:fffffffffffff -i all.bin
 
-  Rotor-Cuda v1.01
+  Rotor-Cuda v1.02
 
   COMP MODE    : COMPRESSED
   COIN TYPE    : BITCOIN
@@ -45,26 +45,25 @@ C:\Users\user>Rotor-Cuda.exe -t 6 -m addresses --coin BTC --range 1000000:ffffff
   DEVICE       : CPU
   CPU THREAD   : 6
   SSE          : YES
-  MAX FOUND    : 65536
-  BTC HASH160s : test.bin
+  BTC HASH160s : all.bin
   OUTPUT FILE  : Found.txt
 
   Loading      : 100 %
-  Loaded       : 75,471 Bitcoin addresses
+  Loaded       : 32,892,770 Bitcoin addresses
 
-  Bloom at     : 0000021805729750
+  Bloom at     : 0000027791DF8CB0
   Version      : 2.1
-  Entries      : 150942
+  Entries      : 65785540
   Error        : 0.0000010000
-  Bits         : 4340363
+  Bits         : 1891674723
   Bits/Elem    : 28.755175
-  Bytes        : 542546 (0 MB)
+  Bytes        : 236459341 (225 MB)
   Hash funcs   : 20
 
   Site         : https://github.com/phrutis/Rotor-Cuda
   Donate       : bc1qh2mvnf5fujg93mwl8pe688yucaw9sflmwsukz9
 
-  Start Time   : Tue Oct 26 20:11:40 2021
+  Start Time   : Sat Oct 30 23:23:20 2021
   Global start : 1000000 (25 bit)
   Global end   : FFFFFFFFFFFFF (52 bit)
   Global range : FFFFFFEFFFFFF (52 bit)
@@ -74,16 +73,16 @@ C:\Users\user>Rotor-Cuda.exe -t 6 -m addresses --coin BTC --range 1000000:ffffff
   CPU Core     : Start from range 2AAAAAB7FFFFF ->
   CPU Core     : Start from range 5555555FFFFFE ->
   CPU Core     : Start from range 80000007FFFFD ->
-  CPU Core     : Start from range AAAAAAAFFFFFC ->
   CPU Core     : Start from range D5555557FFFFB ->
-  [00:00:30] [E7EDFC4] [CPU+GPU: 7.36 Mk/s] [GPU: 0.00 Mk/s] [C: 0.000005 %] [T: 225,638,400 (28 bit)] [F: 0]
+  CPU Core     : Start from range AAAAAAAFFFFFC ->
+  [00:00:32] [12251B1F] [F: 0] [C: 0.000006 %] [CPU 6: 8.76 Mk/s] [T: 285,118,464]
 ```
 ---
 ### Example Random mode (6 cores):
 ```
-C:\Users\user>Rotor-Cuda.exe -t 6 -m addresses --coin BTC -i test.bin -r 1
+C:\Users\user>Rotor-Cuda.exe -t 6 -m addresses --coin BTC -i all.bin -r 1
 
-  Rotor-Cuda v1.01
+  Rotor-Cuda v1.02
 
   COMP MODE    : COMPRESSED
   COIN TYPE    : BITCOIN
@@ -91,32 +90,30 @@ C:\Users\user>Rotor-Cuda.exe -t 6 -m addresses --coin BTC -i test.bin -r 1
   DEVICE       : CPU
   CPU THREAD   : 6
   SSE          : YES
-  RKEY         : Reload every 1000000000
-  MAX FOUND    : 65536
-  BTC HASH160s : test.bin
+  BTC HASH160s : all.bin
   OUTPUT FILE  : Found.txt
 
   Loading      : 100 %
-  Loaded       : 75,471 Bitcoin addresses
+  Loaded       : 32,892,770 Bitcoin addresses
 
-  Bloom at     : 000002727C9E8850
+  Bloom at     : 000001F9755C8FC0
   Version      : 2.1
-  Entries      : 150942
+  Entries      : 65785540
   Error        : 0.0000010000
-  Bits         : 4340363
+  Bits         : 1891674723
   Bits/Elem    : 28.755175
-  Bytes        : 542546 (0 MB)
+  Bytes        : 236459341 (225 MB)
   Hash funcs   : 20
 
   Site         : https://github.com/phrutis/Rotor-Cuda
   Donate       : bc1qh2mvnf5fujg93mwl8pe688yucaw9sflmwsukz9
 
-  Start Time   : Tue Oct 26 19:58:20 2021
+  Start Time   : Sat Oct 30 23:24:59 2021
 
 
   Base Key     : Randomly changes 6 Private keys every 1.000.000.000 on the counter
 
-  [00:06:55] [R: 3] [43B7AA48BA4FF45F3D711F1C64FBC049BB86A063A953C918414E0CDC72B7788D] [F: 0] [CPU+GPU: 7.33 Mk/s] [GPU: 0.00 Mk/s] [T: 3,088,900,096]
+  [00:00:42] [R: 0] [328C57FA645C45EC54003742A8B59CA191A9DB0510E16200765C16A59C86AA94] [F: 0] [CPU 6: 8.67 Mk/s] [T: 370,978,816]
  ```
 
 ### GPU Options: 
@@ -149,9 +146,9 @@ C:\Users\user>Rotor-Cuda.exe -t 6 -m addresses --coin BTC -i test.bin -r 1
 - [**How to create databases**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/) and [**additional parameters**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Help.md)
 ### Example Range mode:
 ```
-C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC --range 1:fffffffffffffffff a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4
+C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 288,512 -m xpoint --coin BTC --range 8000000000:ffffffffff a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4
 
-  Rotor-Cuda v1.01
+  Rotor-Cuda v1.02
 
   COMP MODE    : COMPRESSED
   COIN TYPE    : BITCOIN
@@ -159,37 +156,45 @@ C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC --r
   DEVICE       : GPU
   CPU THREAD   : 0
   GPU IDS      : 0
-  GPU GRIDSIZE : 256x256
+  GPU GRIDSIZE : 288x512
   SSE          : NO
-  MAX FOUND    : 65536
   BTC XPOINT   : a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4
   OUTPUT FILE  : Found.txt
 
-  Start Time   : Tue Oct 26 20:47:27 2021
-  Global start : 1 (1 bit)
-  Global end   : FFFFFFFFFFFFFFFFF (68 bit)
-  Global range : FFFFFFFFFFFFFFFFE (68 bit)
+  Start Time   : Sat Oct 30 23:27:45 2021
+  Global start : 8000000000 (40 bit)
+  Global end   : FFFFFFFFFF (40 bit)
+  Global range : 7FFFFFFFFF (39 bit)
 
-  GPU          : GPU #0 NVIDIA GeForce RTX 2070 (36x64 cores) Grid(256x256)
-
-  Divide the range FFFFFFFFFFFFFFFFE into 65536 threads for fast parallel search
-  Thread 00000: 0000000000000000000000000000000000000000000000000000000000000001 -> 0000000000000000000000000000000000000000000000000010000000000000
-  Thread 00001: 0000000000000000000000000000000000000000000000000010000000000000 -> 000000000000000000000000000000000000000000000000001FFFFFFFFFFFFF
-  Thread 00002: 000000000000000000000000000000000000000000000000001FFFFFFFFFFFFF -> 000000000000000000000000000000000000000000000000002FFFFFFFFFFFFE
-  Thread 00003: 000000000000000000000000000000000000000000000000002FFFFFFFFFFFFE -> 000000000000000000000000000000000000000000000000003FFFFFFFFFFFFD
+  GPU          : GPU #0 NVIDIA GeForce RTX 2070 (36x64 cores) Grid(288x512)
+  Divide the range 7FFFFFFFFF into 147456 threads for fast parallel search
+  Thread 00000: 0000000000000000000000000000000000000000000000000000008000000000 -> 000000000000000000000000000000000000000000000000000000800038E38E
+  Thread 00001: 000000000000000000000000000000000000000000000000000000800038E38E -> 000000000000000000000000000000000000000000000000000000800071C71C
+  Thread 00002: 000000000000000000000000000000000000000000000000000000800071C71C -> 0000000000000000000000000000000000000000000000000000008000AAAAAA
+  Thread 00003: 0000000000000000000000000000000000000000000000000000008000AAAAAA -> 0000000000000000000000000000000000000000000000000000008000E38E38
           ... :
-  Thread 65534: 00000000000000000000000000000000000000000000000FFFDFFFFFFFFF0003 -> 00000000000000000000000000000000000000000000000FFFEFFFFFFFFF0002
-  Thread 65535: 00000000000000000000000000000000000000000000000FFFEFFFFFFFFF0002 -> 00000000000000000000000000000000000000000000000FFFFFFFFFFFFF0001
-  Thread 65536: 00000000000000000000000000000000000000000000000FFFFFFFFFFFFF0001 -> 000000000000000000000000000000000000000000000010000FFFFFFFFF0000
+  Thread 147454: 000000000000000000000000000000000000000000000000000000FFFF8DB8E4 -> 000000000000000000000000000000000000000000000000000000FFFFC69C72
+  Thread 147455: 000000000000000000000000000000000000000000000000000000FFFFC69C72 -> 000000000000000000000000000000000000000000000000000000FFFFFF8000
+  Thread 147456: 000000000000000000000000000000000000000000000000000000FFFFFF8000 -> 000000000000000000000000000000000000000000000000000001000038638E
 
-  [00:01:49] [3047F25AB4] [CPU+GPU: 1.89 Gk/s] [GPU: 1.89 Gk/s] [C: 0.000000 %] [T: 209,111,220,224 (38 bit)] [F: 0]
+  [00:01:20] [253087D675] [F: 0] [C: 28.948975 %] [GPU: 1.96 Gk/s] [T: 159,148,670,976]
+  =================================================================================
+  PubAddress: 1EeAxcprB2PpCnr34VfZdFrkUWuxyiNEFv
+  Priv (WIF): p2pkh:KwDiBf89QgGbjEhKnhXJuH7LrciVrZi3qYjgd9aFJuCJDo5F6Jm7
+  Priv (HEX): E9AE4933D6
+  PubK (HEX): 03A2EFA402FD5268400C77C20E574BA86409EDEDEE7C4020E4B9F0EDBEE53DE0D4
+  =================================================================================
+  [00:01:22] [2619E9C237] [F: 1] [C: 29.663086 %] [GPU: 1.96 Gk/s] [T: 163,074,539,520]
+
+  BYE
+
 ```
 ---
 ### Example Random mode:
 ```
-C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC -r 250 a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4
+C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC -r 50 a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4
 
-  Rotor-Cuda v1.01
+  Rotor-Cuda v1.02
 
   COMP MODE    : COMPRESSED
   COIN TYPE    : BITCOIN
@@ -199,18 +204,15 @@ C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC -r 
   GPU IDS      : 0
   GPU GRIDSIZE : 256x256
   SSE          : NO
-  RKEY         : Reload every 250000000000
-  MAX FOUND    : 65536
   BTC XPOINT   : a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4
   OUTPUT FILE  : Found.txt
 
-  Start Time   : Tue Oct 26 20:53:07 2021
+  Start Time   : Sat Oct 30 22:44:36 2021
 
   GPU          : GPU #0 NVIDIA GeForce RTX 2070 (36x64 cores) Grid(256x256)
+  Base Key     : Randomly changes 65536 start Private keys every 50.000.000.000 on the counter
 
-  Base Key     : Randomly changes 65536 start Private keys every 250.000.000.000 on the counter
-
-  [00:05:19] [R: 2] [E15D8F8CFCA9E196B1B65C6B7F0B31BCCD4B8C1901DCF03F408DB5670D618ADD] [F: 0] [CPU+GPU: 1.93 Gk/s] [GPU: 1.93 Gk/s] [T: 568,814,731,264]
+  [00:00:50] [R: 1] [AC6B20DFFBAAE5025980E5582C31331D01B64FA1C9A988CAC0FFFF6922459314] [F: 0] [GPU: 1.99 Gk/s] [T: 93,012,885,504]
 ```
 
 ## Building
@@ -218,7 +220,7 @@ C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC -r 
 - Microsoft Visual Studio Community 2019
 - CUDA version [**10.22**](https://developer.nvidia.com/cuda-10.2-download-archive?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exenetwork)
 ## License
-Rotor-Cuda is licensed under GPLv3.
+- Rotor-Cuda is licensed under GPLv3.
 
 ## Donation
 - BTC: bc1qh2mvnf5fujg93mwl8pe688yucaw9sflmwsukz9
