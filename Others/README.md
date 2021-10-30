@@ -35,6 +35,5 @@
 ---
 - It takes a long time to get public addresses from the blockchain. 
 - It took me a week to get all public keys from [1 BTC up](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Pubkeys1up.txt). It will take a month to get from [0.1 BTC up](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Pubkeys0.1up.txt).
-- There are 2 text files with public keys in the others folder. 
-- In the others folder there are 2 files ([Pubkeys1up.bin](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Pubkeys1up.bin) and [Pubkeys0.1up.bin](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Pubkeys0.1up.bin)) with ready-made bin databases for Multi X Points mode. 
+- In the Others folder there are 2 files ([Pubkeys1up.bin](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Pubkeys1up.bin) and [Pubkeys0.1up.bin](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Pubkeys0.1up.bin)) with ready-made bin databases for Multi X Points mode. 
 - **Good luck in finding**  
