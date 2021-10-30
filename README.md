@@ -30,7 +30,7 @@ A lot of gratitude to all the developers whose codes has been used here.
 - Normal: ```Rotor-Cuda.exe -t 1 -m address --coin eth --range 1:fffffffffff 0xffe8e53ae95a95f46c19782f1a15d3b58e32404f```
 - Random: ```Rotor-Cuda.exe -t 1 -m address --coin eth -r 1 0xfda5c442e76a95f96c09782f1a15d3b58e32404f```
 ---
-### CPU Public key Multi X Points mode:
+### CPU Public keys Multi X Points mode:
 - Test: ```Rotor-Cuda.exe -t 1 -m xpoints --coin BTC --range 1:1fffffffff -i xpoints_1_37_out_sorted.bin```
 - Normal: ```Rotor-Cuda.exe -t 1 -m xpoints --coin BTC --range 1:ffffffffffffffffffffffffff -i basex.bin```
 - Random: ```Rotor-Cuda.exe -t 1 -m xpoints --coin BTC -r 1 -i basex.bin```
