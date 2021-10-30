@@ -11,35 +11,29 @@ A lot of gratitude to all the developers whose codes has been used here.
 - **-r ?** How many billions to update starting Private Keys? (1-100)
 - [**How to create databases**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/) and [**additional parameters**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Help.md)
 ### CPU Bitcoin Multi Address mode:
-- Test: ```Rotor-Cuda.exe -t 1 -m addresses --coin BTC --range 1:1fffffffff -i puzzle_1_37_hash160_out_sorted.bin```
-- Normal: ```Rotor-Cuda.exe -t 1 -m addresses --coin BTC --range 1000000:fffffffffffffff -i test.bin```
+- Range: ```Rotor-Cuda.exe -t 1 -m addresses --coin BTC --range 1:1fffffffff -i puzzle_1_37_hash160_out_sorted.bin```
 - Random: ```Rotor-Cuda.exe -t 1 -m addresses --coin BTC -r 1 -i test.bin```
 ---
 ### CPU Bitcoin Single Addres mode:
-- Test: ```Rotor-Cuda.exe -t 1 -m address --coin BTC --range 400000000:7ffffffff 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb```
-- Normal: ```Rotor-Cuda.exe -t 1 -m address --coin BTC --range 1:fffffffffffffff 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb```
+- Range: ```Rotor-Cuda.exe -t 1 -m address --coin BTC --range 400000000:7ffffffff 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb```
 - Random: ```Rotor-Cuda.exe -t 1 -m address --coin BTC -r 1 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb```
 ---
 ### CPU ETHEREUM Multi Address mode:
-- Test: ```Rotor-Cuda.exe -t 1 -m addresses --coin eth --range 1:1fffffffff -i puzzle_1_37_addresses_eth_sorted.bin```
-- Normal: ```Rotor-Cuda.exe -t 1 -m addresses --coin eth --range 100000000:ffffffffffff -i addresses_eth_sorted.bin```
+- Range: ```Rotor-Cuda.exe -t 1 -m addresses --coin eth --range 1:1fffffffff -i puzzle_1_37_addresses_eth_sorted.bin```
 - Random: ```Rotor-Cuda.exe -t 1 -m addresses --coin eth -r 1 -i base160_eth.bin```
 ---
 ### CPU ETHEREUM Single Addres mode:
-- Test: ```Rotor-Cuda.exe -t 1 -m address --coin eth --range 8000000:fffffff 0xfda5c442e76a95f96c09782f1a15d3b58e32404f```
-- Normal: ```Rotor-Cuda.exe -t 1 -m address --coin eth --range 1:fffffffffff 0xffe8e53ae95a95f46c19782f1a15d3b58e32404f```
+- Range: ```Rotor-Cuda.exe -t 1 -m address --coin eth --range 8000000:fffffff 0xfda5c442e76a95f96c09782f1a15d3b58e32404f```
 - Random: ```Rotor-Cuda.exe -t 1 -m address --coin eth -r 1 0xfda5c442e76a95f96c09782f1a15d3b58e32404f```
 ---
 ### CPU Public keys Multi X Points mode:
-- Test: ```Rotor-Cuda.exe -t 1 -m xpoints --coin BTC --range 1:1fffffffff -i xpoints_1_37_out_sorted.bin```
-- Normal: ```Rotor-Cuda.exe -t 1 -m xpoints --coin BTC --range 1:ffffffffffffffffffffffffff -i basex.bin```
+- Range: ```Rotor-Cuda.exe -t 1 -m xpoints --coin BTC --range 1:1fffffffff -i xpoints_1_37_out_sorted.bin```
 - Random: ```Rotor-Cuda.exe -t 1 -m xpoints --coin BTC -r 1 -i basex.bin```
 ### CPU Public key Single X Point mode:
-- Test: ```Rotor-Cuda.exe -t 1 -m xpoint --coin BTC --range 8000000000:ffffffffff a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4```
-- Normal: ```Rotor-Cuda.exe -t 1 -m xpoint --coin BTC --range 1:fffffffffffffffff a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4```
+- Range: ```Rotor-Cuda.exe -t 1 -m xpoint --coin BTC --range 8000000000:ffffffffff a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4```
 - Random: ```Rotor-Cuda.exe -t 1 -m xpoint --coin BTC -r 1 a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4```
 
-### Example Normal (range) mode:
+### Example range mode (6 cores):
 ```
 C:\Users\user>Rotor-Cuda.exe -t 6 -m addresses --coin BTC --range 1000000:fffffffffffff -i test.bin
 
@@ -85,7 +79,7 @@ C:\Users\user>Rotor-Cuda.exe -t 6 -m addresses --coin BTC --range 1000000:ffffff
   [00:00:30] [E7EDFC4] [CPU+GPU: 7.36 Mk/s] [GPU: 0.00 Mk/s] [C: 0.000005 %] [T: 225,638,400 (28 bit)] [F: 0]
 ```
 ---
-### Example Random mode:
+### Example Random mode (6 cores):
 ```
 C:\Users\user>Rotor-Cuda.exe -t 6 -m addresses --coin BTC -i test.bin -r 1
 
@@ -126,40 +120,34 @@ C:\Users\user>Rotor-Cuda.exe -t 6 -m addresses --coin BTC -i test.bin -r 1
  ```
 
 ### GPU Options: 
-- **-r ?** How many billions to update 65535 starting Private Keys? (1-100000) Recommended every 5-15 minutes. (-n 500) 
+- **-r ?** How many billions to update 65535 starting Private Keys? (1-100000) Recommended every 5-15 minutes. (-n 250) 
 - If your GPU is weaker than RTX 1080 or the driver crashes. Remove **--gpux 256,256** from the row the grid will be auto-assigned.
 - [**How to create databases**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/) and [**additional parameters**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Help.md)
 ### GPU Bitcoin Multi Address mode:
-- Test: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m addresses --coin BTC --range 1:1fffffffff -i puzzle_1_37_hash160_out_sorted.bin```
-- Normal: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m addresses --coin BTC --range 1000000:fffffffffffffff -i test.bin```
+- Range: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m addresses --coin BTC --range 1:1fffffffff -i puzzle_1_37_hash160_out_sorted.bin```
 - Random: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m addresses --coin BTC -r 250 -i test.bin```
 ---
 ### GPU Bitcoin Single Addres mode:
-- Test: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m address --coin BTC --range 400000000:7ffffffff 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb```
-- Normal: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m address --coin BTC --range 1:fffffffffffffff 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb```
+- Range: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m address --coin BTC --range 400000000:7ffffffff 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb```
 - Random: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m address --coin BTC -r 250 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb```
 ---
 ### GPU ETHEREUM Multi Address mode:
-- Test: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m addresses --coin eth --range 1:1fffffffff -i puzzle_1_37_addresses_eth_sorted.bin```
-- Normal: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m addresses --coin eth --range 100000000:ffffffffffff -i addresses_eth_sorted.bin```
+- Range: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m addresses --coin eth --range 1:1fffffffff -i puzzle_1_37_addresses_eth_sorted.bin```
 - Random: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m addresses --coin eth -r 250 -i base160_eth.bin```
 ---
 ### GPU ETHEREUM Single Addres mode:
-- Test: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m address --coin eth --range 8000000:fffffff 0xfda5c442e76a95f96c09782f1a15d3b58e32404f```
-- Normal: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m address --coin eth --range 1:fffffffffff 0xffe8e53ae95a95f46c19782f1a15d3b58e32404f```
+- Range: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m address --coin eth --range 8000000:fffffff 0xfda5c442e76a95f96c09782f1a15d3b58e32404f```
 - Random: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m address --coin eth -r 250 0xfda5c442e76a95f96c09782f1a15d3b58e32404f```
 ---
 ### GPU Public key Multi X Points mode:
-- Test: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoints --coin BTC --range 1:1fffffffff -i xpoints_1_37_out_sorted.bin```
-- Normal: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoints --coin BTC --range 1:ffffffffffffffffffffffffff -i Pubkeys1up.bin```
-- Random: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoints --coin BTC -r 500 -i Pubkeys1up.bin```
+- Range: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoints --coin BTC --range 1:1fffffffff -i xpoints_1_37_out_sorted.bin```
+- Random: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoints --coin BTC -r 250 -i Pubkeys1up.bin```
 --- 
 ### GPU Public key Single X Point mode:
-- Test: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC --range 8000000000:ffffffffff a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4```
-- Normal: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC --range 1:fffffffffffffffff a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4```
+- Range: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC --range 8000000000:ffffffffff a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4```
 - Random: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC -r 250 a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4```
 - [**How to create databases**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/) and [**additional parameters**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Help.md)
-### Example Normal (range) mode:
+### Example Range mode:
 ```
 C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC --range 1:fffffffffffffffff a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4
 
@@ -197,7 +185,7 @@ C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC --r
   [00:01:49] [3047F25AB4] [CPU+GPU: 1.89 Gk/s] [GPU: 1.89 Gk/s] [C: 0.000000 %] [T: 209,111,220,224 (38 bit)] [F: 0]
 ```
 ---
-### Example Random BEST mode:
+### Example Random mode:
 ```
 C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC -r 250 a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4
 
