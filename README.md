@@ -9,7 +9,7 @@ A lot of gratitude to all the developers whose codes has been used here.
 ### CPU Options: 
 - **-t ?** how many cpu cores to use? (1-128 max) 
 - **-r ?** How many billions to update starting Private Keys? (1-100)
-- How to create databases, additional parameters [**Help page**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Help.md)
+- [**How to create databases**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/) and [**additional parameters**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Help.md)
 ### CPU Bitcoin Multi Address mode:
 - Test: ```Rotor-Cuda.exe -t 1 -m addresses --coin BTC --range 1:1fffffffff -i puzzle_1_37_hash160_out_sorted.bin```
 - Normal: ```Rotor-Cuda.exe -t 1 -m addresses --coin BTC --range 1000000:fffffffffffffff -i test.bin```
@@ -128,7 +128,7 @@ C:\Users\user>Rotor-Cuda.exe -t 6 -m addresses --coin BTC -i test.bin -r 1
 ### GPU Options: 
 - **-r ?** How many billions to update 65535 starting Private Keys? (1-100000) Recommended every 5-15 minutes. (-n 500) 
 - If your GPU is weaker than RTX 1080 or the driver crashes. Remove **--gpux 256,256** from the row the grid will be auto-assigned.
-- How to create databases, additional parameters [**Help page**](https://github.com/phrutis/Rotor-Cuda/blob/main/x64/Release/help.md)
+- [**How to create databases**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/) and [**additional parameters**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Help.md)
 ### GPU Bitcoin Multi Address mode:
 - Test: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m addresses --coin BTC --range 1:1fffffffff -i puzzle_1_37_hash160_out_sorted.bin```
 - Normal: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m addresses --coin BTC --range 1000000:fffffffffffffff -i test.bin```
@@ -151,14 +151,14 @@ C:\Users\user>Rotor-Cuda.exe -t 6 -m addresses --coin BTC -i test.bin -r 1
 ---
 ### GPU Public key Multi X Points mode:
 - Test: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoints --coin BTC --range 1:1fffffffff -i xpoints_1_37_out_sorted.bin```
-- Normal: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoints --coin BTC --range 1:ffffffffffffffffffffffffff -i basex.bin```
-- Random: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoints --coin BTC -r 500 -i basex.bin```
+- Normal: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoints --coin BTC --range 1:ffffffffffffffffffffffffff -i Pubkeys1up.bin```
+- Random: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoints --coin BTC -r 500 -i Pubkeys1up.bin```
 --- 
 ### GPU Public key Single X Point mode:
 - Test: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC --range 8000000000:ffffffffff a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4```
 - Normal: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC --range 1:fffffffffffffffff a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4```
 - Random: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC -r 250 a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4```
-- How to create databases, additional parameters [**Help page**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Help.md)
+- [**How to create databases**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/) and [**additional parameters**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Help.md)
 ### Example Normal (range) mode:
 ```
 C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC --range 1:fffffffffffffffff a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4
