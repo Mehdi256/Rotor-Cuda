@@ -1,14 +1,38 @@
-# Rotor-Cuda v1.02
+# Rotor-Cuda v1.03
 
 This is a modified version of KeyHunt v1.7 by [kanhavishva](https://github.com/kanhavishva/KeyHunt-Cuda).
 A lot of gratitude to all the developers whose codes has been used here.
 
 ## Changes:
-- Made a valid bit random 95% (252-256) bit + 5% (248-252) bit
+- Made a valid (sha256) bit random 95% (252-256) bit + 5% (248-252) bit
+- Random in a given bit range
+- Random between given bit ranges
+- Automatic creation of Rotor-Cuda_START.bat with the specified cmd parameters 
+- Continuation of the search in the range, from the last checkpoint 
+- Ability to specify the time in minutes saving checkpoints 
 - Many small visual improvements
-### CPU Options: 
-- **-t ?** how many cpu cores to use? (1-128 max) 
+
+### To search in a Range (CPUs)
+- **-t ?** how many cpu cores to use? (1-128 max)
+- Add parameter -n 7 to save checkpoint every 7 minutes. (1-1000)
+- If you do not specify -n ? (it will be a normal search without continuing) 
+- After the Rotor-Cuda_Continue.bat file appears, you can continue from the last checkpoint.
+- To continue correctly, do not change the parameters inside the file.
+- **If you do not need to continue, delete the Rotor-Cuda_Continue.bat** 
+- Example: Checkpoin recording every 2 minutes: 
+- Range: ```Rotor-Cuda.exe -t 6 -m address --coin BTC --range 400000000:7ffffffff 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb -n 2```
+
+### Random (CPUs)
+- **-t ?** how many cpu cores to use? (1-128 max)
 - **-r ?** How many billions to update starting Private Keys? (1-100)
+- Specify the -n ? (1-256) bit range in which you want to generate private keys.
+- -n 1 (Range: 1 - 256 (bit)) -n 2 Range: 120 - 256 (bit) -n 3 Range: 160 - 256 (bit) -n 4 Range: 200 - 256 (bit)
+- Further -n (5-256) bit by bit. If you do not specify -n will be the default 95% (252-256) bit + 5% (248-252) bit
+- Use -z (end random range must be greater than -n value) example: -n 253 -z 254 or pazles -n 63 -n 64 (8000000000000000:FFFFFFFFFFFFFFFF)
+- Example: Random only in the 253rd range: 
+- Random: ```Rotor-Cuda.exe -t 6 -m address --coin BTC -r 1 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb -n 253```
+- Example: Random between 253 and 254 bit range:
+- Random: ```Rotor-Cuda.exe -t 6 -m address --coin BTC -r 1 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb -n 253 -z 254```
 - [**How to create databases**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/) and [**additional parameters**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Help.md)
 ### CPU Bitcoin Multi Address mode:
 - Range: ```Rotor-Cuda.exe -t 1 -m addresses --coin BTC --range 1:1fffffffff -i puzzle_1_37_hash160_out_sorted.bin```
@@ -116,8 +140,18 @@ C:\Users\user>Rotor-Cuda.exe -t 6 -m addresses --coin BTC -i all.bin -r 1
   [00:00:42] [R: 0] [328C57FA645C45EC54003742A8B59CA191A9DB0510E16200765C16A59C86AA94] [F: 0] [CPU 6: 8.67 Mk/s] [T: 370,978,816]
  ```
 
-### GPU Options: 
+### To search in a Range (GPUs)
+- Add parameter -n 7 to save checkpoint every 7 minutes. (1-1000)
+- If you do not specify -n ? (it will be a normal search without continuing) 
+- After the Rotor-Cuda_Continue.bat file appears, you can continue from the last checkpoint.
+- To continue correctly, do not change the parameters inside the file.
+- **If you do not need to continue, delete the Rotor-Cuda_Continue.bat** 
+### For Random (GPUs)
 - **-r ?** How many billions to update 65535 starting Private Keys? (1-100000) Recommended every 5-15 minutes. (-n 250) 
+- Specify the -n ? (1-256) bit range in which you want to generate private keys.
+- -n 1 (Range: 1 - 256 (bit)) -n 2 Range: 120 - 256 (bit) -n 3 Range: 160 - 256 (bit) -n 4 Range: 200 - 256 (bit)
+- Further -n (5-256) bit by bit. If you do not specify -n will be the default 95% (252-256) bit + 5% (248-252) bit
+- Use -z (end random range must be greater than -n value) example: -n 253 -z 254 or pazles -n 63 -n 64 (8000000000000000:FFFFFFFFFFFFFFFF)
 - If your GPU is weaker than RTX 1080 or the driver crashes. Remove **--gpux 256,256** from the row the grid will be auto-assigned.
 - [**How to create databases**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/) and [**additional parameters**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Help.md)
 ### GPU Bitcoin Multi Address mode:
