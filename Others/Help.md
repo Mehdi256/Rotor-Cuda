@@ -17,13 +17,15 @@
 - Don't use XPoint[s] mode with ```uncompressed``` compression type.
 - CPU and GPU can not be used together, because the program divides the whole input range into equal parts for all the threads, so use either CPU or GPU so that the whole range can increment by all the threads with consistency.
 - Minimum entries for bloom filter is >= 2.
-- For Multi GPUs use ```Rotor-Cuda.exe -t 0 --gpui 0,1,2 --gpux 256,256,256,256,256,256 -m addresses --coin BTC --range 1:1fffffffff -i test.bin```
+- For Multi GPUs use ```Rotor-Cuda.exe -g --gpui 0,1,2 --gpux 256,256,256,256,256,256 -m addresses --coin BTC --range 1:1fffffffff -i test.bin```
+- For Multi GPUs autogrid use ```Rotor-Cuda.exe -g --gpui 0,1,2 -m addresses --coin BTC --range 1:1fffffffff -i test.bin```
 - If you have a weak GPU or driver error, remove **--gpux 256,256** the Grid will automatically assign.
 
 ## Rotor-Cuda
 Run ```Rotor-Cuda.exe -h```
 
 ```
+C:\Users\user>Rotor-Cuda.exe -h
 Rotor-Cuda [OPTIONS...] [TARGETS]
 Where TARGETS is one address/xpont, or multiple hashes/xpoints file
 
@@ -56,7 +58,11 @@ Where TARGETS is one address/xpont, or multiple hashes/xpoints file
                                                :+COUNT
                                                Where START, END, COUNT are in hex format
 -r, --rkey Rkey                          : Reloads random start Private key every (-r 10 = 10.000.000.000), default is disabled
--v, --version                            : Show version
+-c, --check                              : Check the working of the codes
+-n, --next                               : Range mode GPU save checkpoints every -n ? minutes (1-10000) Default: false
+-n, --next                               : Random mode: What bit range to randomize? -n 1-256 Example -n 252 Default: 252-256 bit
+-z, --zet                                : Random mode: End range for random. Example -n 48 -z 52 (random in 48,49,50,51,52 bit) Default: false
+-d, --display                            : Disable all informers, compact version for many GPUs. Use -d 0 Default -d 1 (display all)
 ```
 ##### Linux
  - Edit the makefile and set up the appropriate CUDA SDK and compiler paths for nvcc. Or pass them as variables to `make` command.
