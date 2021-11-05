@@ -31,7 +31,7 @@ A lot of gratitude to all the developers whose codes has been used here.
 - Specify the -n ? (1-256) bit range in which you want to generate private keys.
 - -n 1 (Range: 1 - 256 (bit)) -n 2 Range: 120 - 256 (bit) -n 3 Range: 160 - 256 (bit) -n 4 Range: 200 - 256 (bit)
 - Further -n (5-256) bit by bit. If you do not specify -n will be the default 95% (252-256) bit + 5% (248-252) bit
-- Use -z (end random range must be greater than -n value) example: -n 253 -z 254 or pazles -n 63 -n 64 (8000000000000000:FFFFFFFFFFFFFFFF)
+- Use -z (end random range must be greater than -n value) example: -n 253 -z 254 or pazles -n 63 -z 64 (8000000000000000:FFFFFFFFFFFFFFFF)
 - Example: Random only in the 253rd range: 
 - Random: ```Rotor-Cuda.exe -t 6 -m address --coin BTC -r 1 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb -n 253```
 - Example: Random between 253 and 254 bit range:
