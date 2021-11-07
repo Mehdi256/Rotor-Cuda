@@ -4,12 +4,12 @@ This is a modified version of KeyHunt v1.7 by [kanhavishva](https://github.com/k
 A lot of gratitude to all the developers whose codes has been used here.
 
 ## Changes:
-- Valid (sha256) bit random 95% (252-256) bit + 5% (248-252) bit
-- Random in a given bit range
-- Random between given bit ranges
+- Default Random 95% (252-256) bit + 5% (248-252) bit
+- Random in a given bit range (1-256)
+- Random between given bit ranges -n ? -z ?
 - Random between the specified hashes ex: 8000000000:ffffffffff
 - Time until the end of the search [years days hours minutes] (max 300 years)
-- Parameter -d 0 expert mode min. information (good for several GPUs)
+- Parameter -d 0 expert mode min. information (good for many GPUs)
 - Automatic creation of Rotor-Cuda_START.bat with the specified cmd parameters 
 - Continuation of the search in the range, from the last checkpoint 
 - Ability to specify the time in minutes saving checkpoints 
@@ -21,7 +21,7 @@ A lot of gratitude to all the developers whose codes has been used here.
 - If you do not specify -n ? (it will be a normal search without continuing) 
 - After the Rotor-Cuda_Continue.bat file appears, you can continue from the last checkpoint.
 - To continue correctly, do not change the parameters inside the file.
-- **If you do not need to continue, delete the Rotor-Cuda_Continue.bat** 
+- **If you do not need to continue, delete the Rotor-Cuda_Continue.bat !!!** 
 - Example: Checkpoin recording every 2 minutes: 
 - ```Rotor-Cuda.exe -t 6 -m address --coin BTC --range 400000000:7ffffffff 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb -n 2```
 
@@ -29,15 +29,14 @@ A lot of gratitude to all the developers whose codes has been used here.
 - **-t ?** how many cpu cores to use? (1-128 max)
 - **-r ?** How many billions values to update starting Private Keys? (1-100)
 - Specify the -n ? (1-256) bit range in which you want to generate private keys.
-- -n 1 (Range: 1 - 256 (bit)) -n 2 Range: 120 - 256 (bit) -n 3 Range: 160 - 256 (bit) -n 4 Range: 200 - 256 (bit)
-- Further -n (5-256) bit by bit. If you do not specify -n will be the default 95% (252-256) bit + 5% (248-252) bit
+- -n (1-256) bit. If you do not specify -n will be the default 95% (252-256) bit + 5% (248-252) bit
 - Use -z (end random range must be greater than -n value) example: -n 253 -z 254 or pazles -n 63 -z 64 (8000000000000000:FFFFFFFFFFFFFFFF)
 - Example: Random only in the 253rd range: 
 - Random: ```Rotor-Cuda.exe -t 6 -m address --coin BTC -r 1 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb -n 253```
 - Example: Random between 253 and 254 bit range:
 - Random: ```Rotor-Cuda.exe -t 6 -m address --coin BTC -r 1 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb -n 253 -z 254```
 - Random between private keys:
-- ```Rotor-Cuda.exe -t 6 -m address --coin BTC --range 80000000:9000000 -r 1 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb```
+- ```Rotor-Cuda.exe -t 6 -m address --coin BTC --range 80000000000000:FFFFFFFFFFFFFF -r 1 1Bn1PWHRi9CeUNw32sJvAp9pfVfLeqnpUb```
 - [**How to create databases**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/) and [**additional parameters**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Help.md)
 ### CPU Bitcoin Multi Address mode:
 - Range: ```Rotor-Cuda.exe -t 1 -m addresses --coin BTC --range 1:1fffffffff -i puzzle_1_37_hash160_out_sorted.bin```
@@ -67,7 +66,7 @@ A lot of gratitude to all the developers whose codes has been used here.
 ```
 C:\Users\user>Rotor-Cuda.exe -t 6 -m addresses --coin BTC --range 1000000:fffffffffffff -i all.bin -n 2
 
-  Rotor-Cuda v1.04 (04.11.2021)
+  Rotor-Cuda v1.05 (07.11.2021)
 
   COMP MODE    : COMPRESSED
   COIN TYPE    : BITCOIN
@@ -79,42 +78,41 @@ C:\Users\user>Rotor-Cuda.exe -t 6 -m addresses --coin BTC --range 1000000:ffffff
   OUTPUT FILE  : Found.txt
 
   Loading      : 100 %
-  Loaded       : 32,892,770 Bitcoin addresses
+  Loaded       : 23,908,481 Bitcoin addresses
 
-  Bloom at     : 000001A693A09020
+  Bloom at     : 0000020CAF5ADE30
   Version      : 2.1
-  Entries      : 65785540
+  Entries      : 47816962
   Error        : 0.0000010000
-  Bits         : 1891674723
+  Bits         : 1374985116
   Bits/Elem    : 28.755175
-  Bytes        : 236459341 (225 MB)
+  Bytes        : 171873140 (163 MB)
   Hash funcs   : 20
 
   Site         : https://github.com/phrutis/Rotor-Cuda
   Donate       : bc1qh2mvnf5fujg93mwl8pe688yucaw9sflmwsukz9
 
-  Start Time   : Thu Nov  4 21:43:40 2021
-  Global start : 0000000000000000000000000000000000000000000000000000000001000000 (25 bit)
-  Global end   : 000000000000000000000000000000000000000000000000000FFFFFFFFFFFFF (52 bit)
-  Global range : 000000000000000000000000000000000000000000000000000FFFFFFEFFFFFF (52 bit)
+  Start Time   : Sun Nov  7 23:46:43 2021
+  Global start : 1000000 (25 bit)
+  Global end   : FFFFFFFFFFFFF (52 bit)
+  Global range : FFFFFFEFFFFFF (52 bit)
 
   Rotor info   : Divide the range FFFFFFEFFFFFF (52 bit) into CPU 6 cores for fast parallel search
 
-
   Rotor info   : Save checkpoints every 2 minutes. For continue range, run the bat file Rotor-Cuda_Continue.bat
-  CPU Core (2) : 0000000000000000000000000000000000000000000000000000000001000000 -> 0000000000000000000000000000000000000000000000000000000001000000
-  CPU Core (2) : 0000000000000000000000000000000000000000000000000002AAAAAB7FFFFF -> 0000000000000000000000000000000000000000000000000002AAAAAB7FFFFF
-  CPU Core (3) : 0000000000000000000000000000000000000000000000000005555555FFFFFE -> 0000000000000000000000000000000000000000000000000005555555FFFFFE
-  CPU Core (4) : 00000000000000000000000000000000000000000000000000080000007FFFFD -> 00000000000000000000000000000000000000000000000000080000007FFFFD
-  CPU Core (5) : 000000000000000000000000000000000000000000000000000AAAAAAAFFFFFC -> 000000000000000000000000000000000000000000000000000AAAAAAAFFFFFC
-  CPU Core (6) : 000000000000000000000000000000000000000000000000000D5555557FFFFB -> 000000000000000000000000000000000000000000000000000FFFFFFFFFFFFF
+  CPU Core (1) : 2AAAAAB7FFFFF -> 5555555FFFFFE
+  CPU Core (2) : 1000000 -> 2AAAAAB7FFFFF
+  CPU Core (3) : 5555555FFFFFE -> 80000007FFFFD
+  CPU Core (4) : 80000007FFFFD -> AAAAAAAFFFFFC
+  CPU Core (5) : AAAAAAAFFFFFC -> D5555557FFFFB
+  CPU Core (6) : D5555557FFFFB -> FFFFFFFFFFFFF
 
-  [00:00:53] [000000000000000000000000000000000000000000000000000000001CC44121] [F: 0] [C: 0.000011 %] [CPU 6: 8.87 Mk/s] [T: 481,603,584] [Years:016 Days:035 06:26:39]
+  [00:08:26] [10AAD8FAE] [F: 0] [Y:015 D:260] [C: 0.000100 %] [CPU 6: 9.09 Mk/s] [T: 4,507,684,864]
 ```
 
-### Continuation from Rotor-Cuda_Continue.bat
+### Example continuation from Rotor-Cuda_Continue.bat
 ```
-Rotor-Cuda v1.03 (02.11.2021)
+Rotor-Cuda v1.05 (07.11.2021)
 
   COMP MODE    : COMPRESSED
   COIN TYPE    : BITCOIN
@@ -126,46 +124,45 @@ Rotor-Cuda v1.03 (02.11.2021)
   OUTPUT FILE  : Found.txt
 
   Loading      : 100 %
-  Loaded       : 32,892,770 Bitcoin addresses
+  Loaded       : 23,908,481 Bitcoin addresses
 
-  Bloom at     : 00000225B07B9D60
+  Bloom at     : 000002331C2E9DB0
   Version      : 2.1
-  Entries      : 65785540
+  Entries      : 47816962
   Error        : 0.0000010000
-  Bits         : 1891674723
+  Bits         : 1374985116
   Bits/Elem    : 28.755175
-  Bytes        : 236459341 (225 MB)
+  Bytes        : 171873140 (163 MB)
   Hash funcs   : 20
 
   Site         : https://github.com/phrutis/Rotor-Cuda
   Donate       : bc1qh2mvnf5fujg93mwl8pe688yucaw9sflmwsukz9
 
-  Start Time   : Tue Nov  2 22:34:23 2021
-  Rotor        : Continuing search from BAT file. Checkpoint created: Tue Nov  2 22:32:49 2021
+  Start Time   : Sun Nov  7 23:56:05 2021
+  Rotor        : Continuing search from BAT file. Checkpoint created: Sun Nov  7 23:54:13 2021
 
-  Global start : 0000000000000000000000000000000000000000000000000000000001000000 (25 bit)
-  Global end   : 000000000000000000000000000000000000000000000000000FFFFFFFFFFFFF (52 bit)
-  Global range : 000000000000000000000000000000000000000000000000000FFFFFFEFFFFFF (52 bit)
+  Global start : 1000000 (25 bit)
+  Global end   : FFFFFFFFFFFFF (52 bit)
+  Global range : FFFFFFEFFFFFF (52 bit)
 
-  Rotor info   : Continuation... Divide the remaining range FFFFEC1340FF9 (52 bit) into CPU 6 cores
-
+  Rotor info   : Continuation... Divide the remaining range FFFFF10DDD7F9 (52 bit) into CPU 6 cores
 
   Rotor info   : Save checkpoints every 2 minutes. For continue range, run the bat file Rotor-Cuda_Continue.bat
-  CPU Core (1) : 000000000000000000000000000000000000000000000000000555558AF752A8 -> 00000000000000000000000000000000000000000000000000080000357752A7
-  CPU Core (2) : 0000000000000000000000000000000000000000000000000000000035F752AA -> 0000000000000000000000000000000000000000000000000002AAAAE07752A9
-  CPU Core (3) : 0000000000000000000000000000000000000000000000000002AAAAE07752A9 -> 000000000000000000000000000000000000000000000000000555558AF752A8
-  CPU Core (4) : 00000000000000000000000000000000000000000000000000080000357752A7 -> 000000000000000000000000000000000000000000000000000AAAAADFF752A6
-  CPU Core (5) : 000000000000000000000000000000000000000000000000000D55558A7752A5 -> 0000000000000000000000000000000000000000000000000010000034F752A4
-  CPU Core (6) : 000000000000000000000000000000000000000000000000000AAAAADFF752A6 -> 000000000000000000000000000000000000000000000000000FFFFFFFFFFFFF
+  CPU Core (2) : 28B05C00 -> 2AAAAD3305BFF
+  CPU Core (1) : 2AAAAD3305BFF -> 555557DB05BFE
+  CPU Core (3) : 8000028305BFD -> AAAAAD2B05BFC
+  CPU Core (4) : 555557DB05BFE -> 8000028305BFD
+  CPU Core (5) : AAAAAD2B05BFC -> D55557D305BFB
+  CPU Core (6) : D55557D305BFB -> FFFFFFFFFFFFF
 
-  [00:00:17] [0000000000000000000000000000000000000000000000000000000140BFC03B] [F: 0] [C: 0.000123 %] [CPU 6: 10.93 Mk/s] [T: 5,526,210,560]
+  [00:00:12] [F033463D] [F: 0] [Y:015 D:351] [C: 0.000091 %] [CPU 6: 8.95 Mk/s] [T: 4,108,218,368]
 ```
 
 ### Example Random mode use -n 253 -z 254 (6 cores):
 ```
 C:\Users\user>Rotor-Cuda.exe -t 6 -m addresses --coin BTC -i all.bin -r 1 -n 253 -z 254
 
-  Rotor-Cuda v1.04 (04.11.2021)
+  Rotor-Cuda v1.05 (07.11.2021)
 
   COMP MODE    : COMPRESSED
   COIN TYPE    : BITCOIN
@@ -177,42 +174,40 @@ C:\Users\user>Rotor-Cuda.exe -t 6 -m addresses --coin BTC -i all.bin -r 1 -n 253
   OUTPUT FILE  : Found.txt
 
   Loading      : 100 %
-  Loaded       : 32,892,770 Bitcoin addresses
+  Loaded       : 23,908,481 Bitcoin addresses
 
-  Bloom at     : 0000026FC31F6A00
+  Bloom at     : 000001AA32D29D80
   Version      : 2.1
-  Entries      : 65785540
+  Entries      : 47816962
   Error        : 0.0000010000
-  Bits         : 1891674723
+  Bits         : 1374985116
   Bits/Elem    : 28.755175
-  Bytes        : 236459341 (225 MB)
+  Bytes        : 171873140 (163 MB)
   Hash funcs   : 20
 
   Site         : https://github.com/phrutis/Rotor-Cuda
   Donate       : bc1qh2mvnf5fujg93mwl8pe688yucaw9sflmwsukz9
 
-  Start Time   : Thu Nov  4 21:47:35 2021
+  Start Time   : Sun Nov  7 23:58:07 2021
 
 
   ROTOR Random : Private keys random 253 <~> 254 (bit)
-  Range        : 1000000000000000000000000000000000000000000000000000000000000000 <~> 7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
   Base Key     : Randomly changes 6 Private keys every 1,000,000,000 on the counter
 
-  [00:04:31] [R: 2] [2DCE63F791F9F1D1EDC6226D04FA72789C3B92E34EC454F449E5F224D238F2B4] [F: 0] [CPU 6: 8.52 Mk/s] [T: 2,317,266,944]
+  [00:00:27] [R: 0] [11969326AD87F607FEABE042E9CE70552742E0C0830BF138368058C87963E138] [F: 0] [CPU 6: 9.07 Mk/s] [T: 250,746,880]
  ```
 
 ### To search in a Range (GPUs)
-- Add parameter -n 7 to save checkpoint every 7 minutes. (1-1000)
+- Add parameter -n 2 to save checkpoint every 2 minutes. (1-10000)
 - If you do not specify -n ? (it will be a normal search without continuing) 
 - After the Rotor-Cuda_Continue.bat file appears, you can continue from the last checkpoint.
 - To continue correctly, do not change the parameters inside the file.
-- **If you do not need to continue, delete the Rotor-Cuda_Continue.bat** 
+- **If you do not need to continue, delete the Rotor-Cuda_Continue.bat !!!** 
 ---
 ### For Random (GPUs)
 - **-r ?** How many billions to update 65535 starting Private Keys? (1-100000) Recommended every 5-15 minutes. (-n 250) 
 - Specify the -n ? (1-256) bit range in which you want to generate private keys.
-- -n 1 (Range: 1 - 256 (bit)) -n 2 Range: 120 - 256 (bit) -n 3 Range: 160 - 256 (bit) -n 4 Range: 200 - 256 (bit)
-- Further -n (5-256) bit by bit. If you do not specify -n will be the default 95% (252-256) bit + 5% (248-252) bit
+- -n (1-256) bit. If you do not specify -n will be the default 95% (252-256) bit + 5% (248-252) bit
 - Use -z (end random range must be greater than -n value) example: -n 253 -z 254 or pazles -n 63 -z 64 (8000000000000000:FFFFFFFFFFFFFFFF)
 - Random between private keys:
 - ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m address --coin BTC -r 100 --range 800000000:900000000 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb```
@@ -249,7 +244,7 @@ C:\Users\user>Rotor-Cuda.exe -t 6 -m addresses --coin BTC -i all.bin -r 1 -n 253
 ```
 C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC --range 8000000000:ffffffffff a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4 -n 2
 
-  Rotor-Cuda v1.04 (04.11.2021)
+  Rotor-Cuda v1.05 (07.11.2021)
 
   COMP MODE    : COMPRESSED
   COIN TYPE    : BITCOIN
@@ -262,33 +257,33 @@ C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC --r
   BTC XPOINT   : a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4
   OUTPUT FILE  : Found.txt
 
-  Start Time   : Thu Nov  4 22:05:53 2021
-  Global start : 0000000000000000000000000000000000000000000000000000008000000000 (40 bit)
-  Global end   : 000000000000000000000000000000000000000000000000000000FFFFFFFFFF (40 bit)
-  Global range : 0000000000000000000000000000000000000000000000000000007FFFFFFFFF (39 bit)
+  Start Time   : Sun Nov  7 23:59:13 2021
+  Global start : 8000000000 (40 bit)
+  Global end   : FFFFFFFFFF (40 bit)
+  Global range : 7FFFFFFFFF (39 bit)
 
   GPU          : GPU #0 NVIDIA GeForce RTX 2070 (36x64 cores) Grid(256x256)
   Rotor info   : Save checkpoints every 2 minutes. For continue range, run the bat file Rotor-Cuda_Continue.bat
 
   Rotor info   : Divide the range 7FFFFFFFFF (39 bit) into GPU 65536 threads
 
-  Thread 00000 : 0000000000000000000000000000000000000000000000000000008000000000 -> 00000000000000000000000000000000000000000000000000000080007FFFFF
-  Thread 00001 : 00000000000000000000000000000000000000000000000000000080007FFFFF -> 0000000000000000000000000000000000000000000000000000008000FFFFFE
-  Thread 00002 : 0000000000000000000000000000000000000000000000000000008000FFFFFE -> 00000000000000000000000000000000000000000000000000000080017FFFFD
-  Thread 00003 : 00000000000000000000000000000000000000000000000000000080017FFFFD -> 0000000000000000000000000000000000000000000000000000008001FFFFFC
+  Thread 00000 : 8000000000 -> 80007FFFFF
+  Thread 00001 : 80007FFFFF -> 8000FFFFFE
+  Thread 00002 : 8000FFFFFE -> 80017FFFFD
+  Thread 00003 : 80017FFFFD -> 8001FFFFFC
            ... :
-  Thread 65534 : 000000000000000000000000000000000000000000000000000000FFFEFF0002 -> 000000000000000000000000000000000000000000000000000000FFFF7F0001
-  Thread 65535 : 000000000000000000000000000000000000000000000000000000FFFF7F0001 -> 000000000000000000000000000000000000000000000000000000FFFFFF0000
-  Thread 65536 : 000000000000000000000000000000000000000000000000000000FFFFFF0000 -> 00000000000000000000000000000000000000000000000000000100007EFFFF
+  Thread 65534 : FFFEFF0002 -> FFFF7F0001
+  Thread 65535 : FFFF7F0001 -> FFFFFF0000
+  Thread 65536 : FFFFFF0000 -> 100007EFFFF
 
-  [00:02:50] [000000000000000000000000000000000000000000000000000000C9CACC51B0] [F: 0] [C: 57.812500 %] [GPU: 1.87 Gk/s] [T: 317,827,579,904] [Time left: 00:02:03]
+  [00:02:49] [C99473A60C] [F: 0] [00:02:04] [C: 57.543945 %] [GPU: 1.87 Gk/s] [T: 316,351,184,896]
   =================================================================================
   PubAddress: 1EeAxcprB2PpCnr34VfZdFrkUWuxyiNEFv
   Priv (WIF): p2pkh:KwDiBf89QgGbjEhKnhXJuH7LrciVrZi3qYjgd9aFJuCJDo5F6Jm7
   Priv (HEX): E9AE4933D6
   PubK (HEX): 03A2EFA402FD5268400C77C20E574BA86409EDEDEE7C4020E4B9F0EDBEE53DE0D4
   =================================================================================
-  [00:02:51] [000000000000000000000000000000000000000000000000000000CA3A864EC1] [F: 1] [C: 58.154297 %] [GPU: 1.87 Gk/s] [T: 319,706,628,096] [Time left: 00:02:02]
+  [00:02:50] [CA042FDBBD] [F: 1] [00:02:03] [C: 57.885742 %] [GPU: 1.87 Gk/s] [T: 318,230,233,088]
 
   BYE
 ```
@@ -297,7 +292,7 @@ C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC --r
 ```
 C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC --range 8000000000:ffffffffff a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4 -n 2
 
-  Rotor-Cuda v1.04 (04.11.2021)
+  Rotor-Cuda v1.05 (07.11.2021)
 
   COMP MODE    : COMPRESSED
   COIN TYPE    : BITCOIN
@@ -310,38 +305,36 @@ C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC --r
   BTC XPOINT   : a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4
   OUTPUT FILE  : Found.txt
 
-  Start Time   : Thu Nov  4 22:09:46 2021
-  Rotor        : Continuing search from BAT file. Checkpoint created: Thu Nov  4 22:07:47 2021
+  Start Time   : Mon Nov  8 00:03:13 2021
+  Rotor        : Continuing search from BAT file. Checkpoint created: Mon Nov  8 00:01:06 2021
 
-  Global start : 0000000000000000000000000000000000000000000000000000008000000000 (40 bit)
-  Global end   : 000000000000000000000000000000000000000000000000000000FFFFFFFFFF (40 bit)
-  Global range : 0000000000000000000000000000000000000000000000000000007FFFFFFFFF (39 bit)
+  Global start : 8000000000 (40 bit)
+  Global end   : FFFFFFFFFF (40 bit)
+  Global range : 7FFFFFFFFF (39 bit)
 
   GPU          : GPU #0 NVIDIA GeForce RTX 2070 (36x64 cores) Grid(256x256)
   Rotor info   : Save checkpoints every 2 minutes. For continue range, run the bat file Rotor-Cuda_Continue.bat
 
-  Rotor info   : Continuation... Divide the remaining range 4FC7FFFFFF (39 bit) into GPU 65536 threads
+  Rotor info   : Continuation... Divide the remaining range 4FAFFEFFFF (39 bit) into GPU 65536 threads
 
-  Thread 00000 : 0000000000000000000000000000000000000000000000000000008000303800 -> 00000000000000000000000000000000000000000000000000000080007FFFFF
-  Thread 00001 : 0000000000000000000000000000000000000000000000000000008000B037FF -> 0000000000000000000000000000000000000000000000000000008000FFFFFE
-  Thread 00002 : 00000000000000000000000000000000000000000000000000000080013037FE -> 00000000000000000000000000000000000000000000000000000080017FFFFD
-  Thread 00003 : 0000000000000000000000000000000000000000000000000000008001B037FD -> 0000000000000000000000000000000000000000000000000000008001FFFFFC
+  Thread 00000 : 8000305000 -> 80007FFFFF
+  Thread 00001 : 8000B04FFF -> 8000FFFFFE
+  Thread 00002 : 8001304FFE -> 80017FFFFD
+  Thread 00003 : 8001B04FFD -> 8001FFFFFC
            ... :
-  Thread 65534 : 000000000000000000000000000000000000000000000000000000FFFF2F3802 -> 000000000000000000000000000000000000000000000000000000FFFF7F0001
-  Thread 65535 : 000000000000000000000000000000000000000000000000000000FFFFAF3801 -> 000000000000000000000000000000000000000000000000000000FFFFFF0000
-  Thread 65536 : 00000000000000000000000000000000000000000000000000000100002F3800 -> 00000000000000000000000000000000000000000000000000000100007EFFFF
+  Thread 65534 : FFFF2F5002 -> FFFF7F0001
+  Thread 65535 : FFFFAF5001 -> FFFFFF0000
+  Thread 65536 : 100002F5000 -> 100007EFFFF
 
-  [00:00:55] [000000000000000000000000000000000000000000000000000000C4F1DD06C2] [F: 0] [C: 57.617188 %] [GPU: 1.92 Gk/s] [T: 316,753,838,080] [Time left: 00:02:01]   8:88]
+  [00:00:56] [C54475752E] [F: 0] [00:02:03] [C: 57.714844 %] [GPU: 1.87 Gk/s] [T: 317,290,708,992]  ]
   =================================================================================
   PubAddress: 1EeAxcprB2PpCnr34VfZdFrkUWuxyiNEFv
   Priv (WIF): p2pkh:KwDiBf89QgGbjEhKnhXJuH7LrciVrZi3qYjgd9aFJuCJDo5F6Jm7
   Priv (HEX): E9AE4933D6
   PubK (HEX): 03A2EFA402FD5268400C77C20E574BA86409EDEDEE7C4020E4B9F0EDBEE53DE0D4
   =================================================================================
-  [00:00:56] [000000000000000000000000000000000000000000000000000000C56490EB33] [F: 1] [C: 57.958984 %] [GPU: 1.92 Gk/s] [T: 318,632,886,272] [Time left: 00:02:00]
-
-  BYE
-
+  [00:00:57] [C5B436553B] [F: 1] [00:02:02] [C: 58.056641 %] [GPU: 1.87 Gk/s] [T: 319,169,757,184]
+  
 C:\Users\user>goto :loop
 ```
 
@@ -349,7 +342,7 @@ C:\Users\user>goto :loop
 ```
 C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC -r 50 a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4 -n 63 -z 64
 
-  Rotor-Cuda v1.04 (04.11.2021)
+  Rotor-Cuda v1.05 (07.11.2021)
 
   COMP MODE    : COMPRESSED
   COIN TYPE    : BITCOIN
@@ -362,19 +355,19 @@ C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC -r 
   BTC XPOINT   : a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4
   OUTPUT FILE  : Found.txt
 
-  Start Time   : Thu Nov  4 22:12:37 2021
+  Start Time   : Mon Nov  8 00:05:07 2021
 
   GPU          : GPU #0 NVIDIA GeForce RTX 2070 (36x64 cores) Grid(256x256)
-  ROTOR Random : Private keys random 63 <~> 64 (bit) Range: 8000000000000000 <~> FFFFFFFFFFFFFFFF
+  ROTOR Random : Private keys random 63 (bit) <~> 64 (bit)
   Base Key     : Randomly changes 65536 start Private keys every 50,000,000,000 on the counter
 
-  [00:01:17] [R: 2] [000000000000000000000000000000000000000000000000ACF1BCC81C962052] [F: 0] [GPU: 2.07 Gk/s] [T: 141,868,138,496]
+  [00:00:30] [R: 1] [2B86D4E372BDBA32] [F: 0] [GPU: 1.52 Gk/s] [T: 56,371,445,760]
 ```
 ### Example Random --range
 ```
-C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoints --coin BTC -r 100 --range 7777777777:8888888888 -i Pub01.bin
+Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoints --coin BTC -r 100 --range 7777777777:8888888888 -i Pub01.bin
 
-  Rotor-Cuda v1.04 (04.11.2021)
+  Rotor-Cuda v1.05 (07.11.2021)
 
   COMP MODE    : COMPRESSED
   COIN TYPE    : BITCOIN
@@ -390,7 +383,7 @@ C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoints --coin BTC -r
   Loading      : 100 %
   Loaded       : 243,734 Bitcoin xpoints
 
-  Bloom at     : 00000202CA1375B0
+  Bloom at     : 00000277E60E9E50
   Version      : 2.1
   Entries      : 487468
   Error        : 0.0000010000
@@ -402,20 +395,20 @@ C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoints --coin BTC -r
   Site         : https://github.com/phrutis/Rotor-Cuda
   Donate       : bc1qh2mvnf5fujg93mwl8pe688yucaw9sflmwsukz9
 
-  Start Time   : Thu Nov  4 22:17:25 2021
+  Start Time   : Mon Nov  8 00:06:12 2021
 
   GPU          : GPU #0 NVIDIA GeForce RTX 2070 (36x64 cores) Grid(256x256)
   Base Key     : Randomly changes 65536 start Private keys every 100,000,000,000 on the counter
+  ROTOR Random : Min 39 (bit) 7777777777
+  ROTOR Random : Max 40 (bit) 8888888888
 
-  ROTOR Random : Private keys random in Range: 7777777777 <~> 8888888888 (MAX)
-
-  [00:02:45] [R: 2] [0000000000000000000000000000000000000000000000000000007207A8C063] [F: 0] [GPU: 1.34 Gk/s] [T: 217,566,937,088]
+  [00:01:19] [R: 1] [7FDFF2058C] [F: 0] [GPU: 1.12 Gk/s] [T: 104,555,610,112]
 ```
 ### Example for multiple GPUs range search parameter -d 0
 ```
 C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m address --coin eth --range 1:1fffffffffffffff -d 0 0xfda5c442e76a95f96c09782f1a15d3b58e32404f
 
-  Rotor-Cuda v1.04 (04.11.2021)
+  Rotor-Cuda v1.05 (07.11.2021)
 
   COIN TYPE    : ETHEREUM
   SEARCH MODE  : Single Address
@@ -427,10 +420,10 @@ C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m address --coin eth --
   ETH ADDRESS  : 0xfda5c442e76a95f96c09782f1a15d3b58e32404f
   OUTPUT FILE  : Found.txt
 
-  Start Time   : Thu Nov  4 22:39:14 2021
+  Start Time   : Mon Nov  8 00:08:26 2021
 
   GPU          : GPU #0 NVIDIA GeForce RTX 2070 (36x64 cores) Grid(256x256)
-  [00:01:28] [F: 0] [C: 0.000002 %] [GPU: 485.26 Mk/s] [T: 42,547,019,776] [Years:150 Days:247 05:02:02]
+  [00:00:42] [F: 0] [Y:156 D:015] [C: 0.000001 %] [GPU: 468.58 Mk/s] [T: 20,266,876,928]
 ```
 ## Building
 ### Windows
