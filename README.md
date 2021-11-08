@@ -1,4 +1,4 @@
-# Rotor-Cuda v1.04
+# Rotor-Cuda v1.05
 ![alt text](Others/Rotor-Cuda.jpg "Rotor-Cuda")
 This is a modified version of KeyHunt v1.7 by [kanhavishva](https://github.com/kanhavishva/KeyHunt-Cuda).
 A lot of gratitude to all the developers whose codes has been used here.
@@ -7,7 +7,7 @@ A lot of gratitude to all the developers whose codes has been used here.
 - Default Random 95% (252-256) bit + 5% (248-252) bit
 - Random in a given bit range (1-256)
 - Random between given bit ranges -n ? -z ?
-- Random between the specified hashes ex: 8000000000:ffffffffff
+- Random between the specified hashes ex: --range 8000000000:ffffffffff
 - Time until the end of the search [years days hours minutes] (max 300 years)
 - Parameter -d 0 expert mode min. information (good for many GPUs)
 - Automatic creation of Rotor-Cuda_START.bat with the specified cmd parameters 
@@ -17,11 +17,11 @@ A lot of gratitude to all the developers whose codes has been used here.
 
 ### To search in a Range (CPUs)
 - **-t ?** how many cpu cores to use? (1-128 max)
-- Add parameter -n 7 to save checkpoint every 7 minutes. (1-1000)
+- Add parameter -n 5 to save checkpoint every 5 minutes. (1-1000)
 - If you do not specify -n ? (it will be a normal search without continuing) 
 - After the Rotor-Cuda_Continue.bat file appears, you can continue from the last checkpoint.
-- To continue correctly, do not change the parameters inside the file.
-- **If you do not need to continue, delete the Rotor-Cuda_Continue.bat !!!** 
+- To continue correctly, do not change the parameters inside the bat file.
+- **If you do not need to continue, DELETE the Rotor-Cuda_Continue.bat !!!** 
 - Example: Checkpoin recording every 2 minutes: 
 - ```Rotor-Cuda.exe -t 6 -m address --coin BTC --range 400000000:7ffffffff 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb -n 2```
 
@@ -29,12 +29,12 @@ A lot of gratitude to all the developers whose codes has been used here.
 - **-t ?** how many cpu cores to use? (1-128 max)
 - **-r ?** How many billions values to update starting Private Keys? (1-100)
 - Specify the -n ? (1-256) bit range in which you want to generate private keys.
-- -n (1-256) bit. If you do not specify -n will be the default 95% (252-256) bit + 5% (248-252) bit
-- Use -z (end random range must be greater than -n value) example: -n 253 -z 254 or pazles -n 63 -z 64 (8000000000000000:FFFFFFFFFFFFFFFF)
+- **-n ?** (1-256) bit. If you do not specify -n will be the default 95% (252-256) bit + 5% (248-252) bit
+- **-z ?** (end random range must be greater than -n value) example: -n 63 -z 254 or pazles -n 63 -z 64 (8000000000000000:FFFFFFFFFFFFFFFF)
 - Example: Random only in the 253rd range: 
 - Random: ```Rotor-Cuda.exe -t 6 -m address --coin BTC -r 1 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb -n 253```
-- Example: Random between 253 and 254 bit range:
-- Random: ```Rotor-Cuda.exe -t 6 -m address --coin BTC -r 1 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb -n 253 -z 254```
+- Example: Random between 125 and 254 bit range:
+- Random: ```Rotor-Cuda.exe -t 6 -m address --coin BTC -r 1 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb -n 125 -z 254```
 - Random between private keys:
 - ```Rotor-Cuda.exe -t 6 -m address --coin BTC --range 80000000000000:FFFFFFFFFFFFFF -r 1 1Bn1PWHRi9CeUNw32sJvAp9pfVfLeqnpUb```
 - [**How to create databases**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/) and [**additional parameters**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Help.md)
@@ -198,20 +198,20 @@ C:\Users\user>Rotor-Cuda.exe -t 6 -m addresses --coin BTC -i all.bin -r 1 -n 253
  ```
 
 ### To search in a Range (GPUs)
-- Add parameter -n 2 to save checkpoint every 2 minutes. (1-10000)
+- Add parameter -n 5 to save checkpoint every 5 minutes. (1-10000)
 - If you do not specify -n ? (it will be a normal search without continuing) 
 - After the Rotor-Cuda_Continue.bat file appears, you can continue from the last checkpoint.
 - To continue correctly, do not change the parameters inside the file.
-- **If you do not need to continue, delete the Rotor-Cuda_Continue.bat !!!** 
+- **If you do not need to continue, DELETE the Rotor-Cuda_Continue.bat !!!** 
 ---
 ### For Random (GPUs)
 - **-r ?** How many billions to update 65535 starting Private Keys? (1-100000) Recommended every 5-15 minutes. (-n 250) 
 - Specify the -n ? (1-256) bit range in which you want to generate private keys.
-- -n (1-256) bit. If you do not specify -n will be the default 95% (252-256) bit + 5% (248-252) bit
-- Use -z (end random range must be greater than -n value) example: -n 253 -z 254 or pazles -n 63 -z 64 (8000000000000000:FFFFFFFFFFFFFFFF)
+- **-n ?** (1-256) bit. If you do not specify -n will be the default 95% (252-256) bit + 5% (248-252) bit
+- **-z ?** (end random range must be greater than -n value) example: -n 253 -z 254 or pazles -n 63 -z 64 (8000000000000000:FFFFFFFFFFFFFFFF)
 - Random between private keys:
 - ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m address --coin BTC -r 100 --range 800000000:900000000 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb```
-- If you know that your parameters are correct, use the expert mode -d 0 If you are using multiple GPUs use -d 0 for convenience 
+- If you know that your parameters are correct, use the expert mode -d 0 If you are using many GPUs use -d 0 for convenience 
 - If your GPU is weaker than RTX 1080 or the driver crashes. Remove **--gpux 256,256** from the row the grid will be auto-assigned.
 - [**How to create databases**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/) and [**additional parameters**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Help.md)
 ---
