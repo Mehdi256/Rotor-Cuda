@@ -7,7 +7,7 @@ A lot of gratitude to all the developers whose codes has been used here.
 - Default Random 95% (252-256) bit + 5% (248-252) bit
 - Random in a given bit range (1-256)
 - Random between given bit ranges -n ? -z ?
-- Random between the specified --range 8000000000:ffffffffff
+- Random between the specified --range 8000000000000000:ffffffffffffffff
 - Time until the end of the search [years days hours minutes] (max 300 years)
 - Parameter -d 0 expert mode min. information (good for many GPUs)
 - Automatic creation of Rotor-Cuda_START.bat with the specified cmd parameters 
@@ -29,13 +29,13 @@ A lot of gratitude to all the developers whose codes has been used here.
 - **-t ?** how many cpu cores to use? (1-128 max)
 - **-r ?** How many billions values to update starting Private Keys? (1-100)
 - **-n ?** (1-256) bit. If you do not specify -n will be the default random 95% (252-256) bit + 5% (248-252) bit
-- **-z ?** (end random range must be greater than -n value) example: -n 63 -z 254 or pazles -n 63 -z 64 (8000000000000000:FFFFFFFFFFFFFFFF)
-- Example: Random only in the 253rd range: 
-- Random: ```Rotor-Cuda.exe -t 6 -m address --coin BTC -r 1 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb -n 253```
+- **-z ?** (end random range must be greater than -n value) example: -n 63 -z 254
+- Example: Random in the 253rd range: 
+- Random: ```Rotor-Cuda.exe -t 2 -m address --coin BTC -r 1 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb -n 253```
 - Example: Random between 125 and 254 bit range:
-- Random: ```Rotor-Cuda.exe -t 6 -m address --coin BTC -r 1 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb -n 125 -z 254```
-- Random between:
-- ```Rotor-Cuda.exe -t 6 -m address --coin BTC --range 80000000000000:FFFFFFFFFFFFFF -r 1 1Bn1PWHRi9CeUNw32sJvAp9pfVfLeqnpUb```
+- Random: ```Rotor-Cuda.exe -t 2 -m address --coin BTC -r 1 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb -n 125 -z 254```
+- Random for search [puzzle](https://privatekeys.pw/puzzles/bitcoin-puzzle-tx) Example puzzle64:
+- ```Rotor-Cuda.exe -t 2 -m address --coin BTC -r 1 --range 8000000000000000:ffffffffffffffff 16jY7qLJnxb7CHZyqBP8qca9d51gAjyXQN```
 - [**How to create databases**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/) and [**additional parameters**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Help.md)
 ### CPU Bitcoin Multi Address mode:
 - Range: ```Rotor-Cuda.exe -t 1 -m addresses --coin BTC --range 1:1fffffffff -i puzzle_1_37_hash160_out_sorted.bin```
@@ -206,9 +206,9 @@ C:\Users\user>Rotor-Cuda.exe -t 6 -m addresses --coin BTC -i all.bin -r 1 -n 253
 ### For Random use - r 100 (GPUs)
 - **-r ?** How many billions to update 65535 starting Private Keys? (1-100000) Recommended every 5-15 minutes. (-n 100)
 - **-n ?** (1-256) bit. If you do not specify -n will be the default 95% (252-256) bit + 5% (248-252) bit
-- **-z ?** (end random range must be greater than -n value) example: -n 253 -z 254 or pazles -n 63 -z 64 (8000000000000000:FFFFFFFFFFFFFFFF)
-- Random between private keys:
-- ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m address --coin BTC -r 100 --range 800000000:900000000 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb```
+- **-z ?** (end random range must be greater than -n value) example: -n 252 -z 256
+- Random for search [puzzle](https://privatekeys.pw/puzzles/bitcoin-puzzle-tx)64 example:
+- ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m address --coin BTC -r 100 --range 8000000000000000:ffffffffffffffff 16jY7qLJnxb7CHZyqBP8qca9d51gAjyXQN```
 - If you know that your parameters are correct, use the expert mode -d 0 If you are using many GPUs use -d 0 for convenience 
 - If your GPU is weaker than RTX 1080 or the driver crashes. Remove **--gpux 256,256** from the row the grid will be auto-assigned.
 - [**How to create databases**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/) and [**additional parameters**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Help.md)
@@ -232,10 +232,10 @@ C:\Users\user>Rotor-Cuda.exe -t 6 -m addresses --coin BTC -i all.bin -r 1 -n 253
 ### GPU Public key Multi X Points mode:
 - Range: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoints --coin BTC --range 1:1fffffffff -i xpoints_1_37_out_sorted.bin```
 - Random: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoints --coin BTC -r 250 -i Pubkeys1up.bin```
---- 
-### GPU Public key Single X Point mode:
-- Range: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC --range 8000000000:ffffffffff a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4```
-- Random: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC -r 250 a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4```
+---
+### GPU Public key Single X Point mode [Puzzle](https://privatekeys.pw/puzzles/bitcoin-puzzle-tx)120 example:
+- Range: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC --range 800000000000000000000000000000:ffffffffffffffffffffffffffffff ceb6cbbcdbdf5ef7150682150f4ce2c6f4807b349827dcdbdd1f2efa885a2630```
+- Random: ```Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint -r 100 --coin BTC --range 800000000000000000000000000000:ffffffffffffffffffffffffffffff ceb6cbbcdbdf5ef7150682150f4ce2c6f4807b349827dcdbdd1f2efa885a2630```
 - [**How to create databases**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/) and [**additional parameters**](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Help.md)
 ---
 ### Example Range mode and -n 2:
