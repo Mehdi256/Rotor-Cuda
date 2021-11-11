@@ -1,4 +1,4 @@
-# Rotor-Cuda v1.05
+# Rotor-Cuda v1.06
 ![alt text](Others/Rotor-Cuda.jpg "Rotor-Cuda")
 This is a modified version of KeyHunt v1.7 by [kanhavishva](https://github.com/kanhavishva/KeyHunt-Cuda).
 A lot of gratitude to all the developers whose codes has been used here.
@@ -7,7 +7,7 @@ A lot of gratitude to all the developers whose codes has been used here.
 - Default Random 95% (252-256) bit + 5% (248-252) bit
 - Random in a given bit range (1-256)
 - Random between given bit ranges -n ? -z ?
-- Random between the specified --range 8000000000000000:ffffffffffffffff
+- Random between the specified special for Pazzles --range 8000000000000000:ffffffffffffffff
 - Time until the end of the search [years days hours minutes] (max 300 years)
 - Parameter -d 0 expert mode min. information (good for many GPUs)
 - Automatic creation of Rotor-Cuda_START.bat with the specified cmd parameters 
