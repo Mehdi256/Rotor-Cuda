@@ -7,8 +7,8 @@ A lot of gratitude to all the developers whose codes has been used here.
 - Default Random 95% (252-256) bit + 5% (248-252) bit
 - Random in a given bit range (1-256)
 - Random between given bit ranges -n ? -z ?
-- Random between the specified special for Pazzles --range 8000000000000000:ffffffffffffffff
-- Time until the end of the search [years days hours minutes] (max 300 years)
+- Random between the specified special for Puzzle --range 8000000000000000:ffffffffffffffff
+- Time until the end of the search [years days hours minutes seconds] (max 300 years)
 - Parameter -d 0 expert mode min. information (good for many GPUs)
 - Automatic creation of Rotor-Cuda_START.bat with the specified cmd parameters 
 - Continuation of the search in the range, from the last checkpoint 
@@ -18,13 +18,13 @@ A lot of gratitude to all the developers whose codes has been used here.
 ### To search in a Range (CPUs)
 - **-t ?** how many cpu cores to use? (1-128 max)
 - **-n ?** save checkpoint every ? minutes. (1-1000)
-- If you do not specify -n ? (isearch without continuing) 
+- If you do not specify -n ? (search without continuing) 
 - After the Rotor-Cuda_Continue.bat file appears, you can continue from the last checkpoint.
 - To continue correctly, do not change the parameters inside the bat file.
 - **IF YOU DO NOT NEED TO CONTINUE, DELETE THE Rotor-Cuda_Continue.bat !!!**
 - If you start another range without deleting, a counter will be taken from the baht file and an incorrect continuation will start instead of searching. 
-- Example: Checkpoin recording every 2 minutes: 
-- ```Rotor-Cuda.exe -t 6 -m address --coin BTC --range 400000000:7ffffffff 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb -n 2```
+- Example puzzle: Checkpoin recording every 2 minutes: 
+- ```Rotor-Cuda.exe -t 6 -m address --coin BTC --range 8000000000000000:ffffffffffffffff 16jY7qLJnxb7CHZyqBP8qca9d51gAjyXQN  -n 2```
 
 ### Random (CPUs)
 - **-t ?** how many cpu cores to use? (1-128 max)
