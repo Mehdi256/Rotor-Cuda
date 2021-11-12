@@ -22,6 +22,7 @@ A lot of gratitude to all the developers whose codes has been used here.
 - After the Rotor-Cuda_Continue.bat file appears, you can continue from the last checkpoint.
 - To continue correctly, do not change the parameters inside the bat file.
 - **IF YOU DO NOT NEED TO CONTINUE, DELETE THE Rotor-Cuda_Continue.bat !!!**
+- If you start another range without deleting, a counter will be taken from the baht file and an incorrect continuation will start instead of searching. 
 - Example: Checkpoin recording every 2 minutes: 
 - ```Rotor-Cuda.exe -t 6 -m address --coin BTC --range 400000000:7ffffffff 1PWCx5fovoEaoBowAvF5k91m2Xat9bMgwb -n 2```
 
