@@ -1,4 +1,4 @@
-##### Linux
+## Linux building
 
 1. Install libgmp-dev
 2. Install CUDA 11.0
