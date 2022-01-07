@@ -1,7 +1,5 @@
 ## Linux building
 
-To build Linux, replace 2 files Main.cpp and Fialka.cpp with these!
-
 1. Install libgmp-dev
 2. Install CUDA 11.0
  
