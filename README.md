@@ -429,6 +429,13 @@ C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m address --coin eth --
 ### Windows
 - Microsoft Visual Studio Community 2019
 - CUDA version [**10.22**](https://developer.nvidia.com/cuda-10.2-download-archive?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exenetwork)
+#### For RTX 3060, 3070, 3080, 3090, A5000, A6000, A100
+- Use CUDA 11.7
+- Rename [this file](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Rotor-Cuda30xx.vcxproj) (remove 30xx ) from the name and replace the file in the project
+#### For RTX 2060, 2070, 2080
+- Use CUDA 11.7
+- Rename [this file](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Rotor-Cuda20xx.vcxproj) (remove 30xx ) from the name and replace the file in the project
+
 ## License
 - Rotor-Cuda is licensed under GPLv3.
 
