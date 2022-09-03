@@ -20,6 +20,7 @@
     $ cd Rotor-Cuda
     $ make gpu=1 CCAP=75 all
     ```
-    FOR RTX 3060, 3070, 3080, 3090, A5000, A6000, A100 - use CCAP=86 (CUDA 11.7)
-    FOR RTX 2070, 2080 - use CCAP=75 (CUDA 11.7)
-    FOR GTX 1060, 1070, 1080 - use CCAP=61 (CUDA 10.2)
+    <hr>
+    FOR RTX 3060, 3070, 3080, 3090, A5000, A6000, A100 - use CCAP=86 (CUDA 11.7)</br>
+    FOR RTX 2070, 2080 - use CCAP=75 (CUDA 11.7)</br>
+    FOR GTX 1060, 1070, 1080 - use CCAP=61 (CUDA 10.2)</br>
