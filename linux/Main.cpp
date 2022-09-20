@@ -520,9 +520,6 @@ int main(int argc, char** argv)
 		bok2 = bok2 + 1000;
 	}
 
-	console con(bok1, bok2);
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(hConsole, color);
 	printf("\n");
 	printf("  Rotor-Cuda v" RELEASE "\n");
 	printf("\n");

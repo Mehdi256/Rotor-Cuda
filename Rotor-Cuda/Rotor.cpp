@@ -349,8 +349,6 @@ void Rotor::output(std::string addr, std::string pAddr, std::string pAddrHex, st
 
 	if (!needToClose)
 		printf("\n");
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_INTENSITY);
 	fprintf(f, "PubAddress: %s\n", addr.c_str());
 	fprintf(stdout, "\n  =================================================================================\n");
 	fprintf(stdout, "  PubAddress: %s\n", addr.c_str());

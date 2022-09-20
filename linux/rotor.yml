@@ -1,0 +1,11 @@
+name: rotor
+channels:
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.9.7
+  - pip
+  - cuda-nvcc
+  - cuda-libraries-dev
+  - conda-forge::gxx=11.3
+  - gmp
