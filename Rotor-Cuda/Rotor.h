@@ -77,7 +77,7 @@ private:
 	void rKeyRequest(TH_PARAM* p);
 	void SetupRanges(uint32_t totalThreads);
 
-	void getCPUStartingKey(Int& tRangeStart, Int& tRangeEnd, Int& key, Point& startP);
+	void getCPUStartingKey(Int& tRangeStart, Int& tRangeEnd, Int& key, Point& startP, int thId);
 	void getGPUStartingKeys(Int& tRangeStart, Int& tRangeEnd, int groupSize, int nbThread, Int* keys, Point* p);
 
 	int CheckBloomBinary(const uint8_t* _xx, uint32_t K_LENGTH);
@@ -89,7 +89,7 @@ private:
 	Secp256K1* secp;
 	Bloom* bloom;
 
-	uint64_t counters[256];
+	uint64_t counters[1024];
 	double startTime;
 
 	int compMode;
@@ -116,7 +116,6 @@ private:
 	Int rangeDiffcp;
 	Int rangeDiffbar;
 	Int gir;
-	int trk = 0;
 	Int razn;
 	Int rhex;
 	int minuty;

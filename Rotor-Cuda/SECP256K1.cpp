@@ -597,6 +597,7 @@ void Secp256K1::GetHash160(bool compressed, Point& pubKey, unsigned char* hash)
 
 	}
 
+	// TODO BUG inside the computation
 	ripemd160_32(shapk, hash);
 
 }

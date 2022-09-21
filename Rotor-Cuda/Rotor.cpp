@@ -168,7 +168,7 @@ Rotor::Rotor(const std::vector<unsigned char>& hashORxpoint, int compMode, int s
 	this->rangeDiffcp.Set(&this->rangeDiff2);
 	this->rangeDiffbar.Set(&this->rangeDiff2);
 	this->targetCounter = 1;
-	this->nbit2 = nbit2;
+	this->nbit2 = nbit2; // This is the nProcs
 	secp = new Secp256K1();
 	secp->Init();
 
@@ -652,7 +652,7 @@ void Rotor::checkSingleAddressesSSE(bool compressed, Int key, int i, Point p1, P
 
 // ----------------------------------------------------------------------------
 
-void Rotor::getCPUStartingKey(Int & tRangeStart, Int & tRangeEnd, Int & key, Point & startP)
+void Rotor::getCPUStartingKey(Int & tRangeStart, Int & tRangeEnd, Int & key, Point & startP, int thId)
 {
 	if (rKey <= 0) {
 
@@ -662,18 +662,8 @@ void Rotor::getCPUStartingKey(Int & tRangeStart, Int & tRangeEnd, Int & key, Poi
 			tRangeStart.Add(nextt);
 		}
 		key.Set(&tRangeStart);
-		Int kon;
-		kon.Set(&tRangeStart);
-		kon.Add(&rangeDiffcp);
-		trk = trk + 1;
 		if (display > 0) {
-
-			if (trk == nbit2) {
-				printf("  CPU Core (%d) : %s -> %s \n\n", trk, key.GetBase16().c_str(), rangeEnd.GetBase16().c_str());
-			}
-			else {
-				printf("  CPU Core (%d) : %s -> %s \n", trk, key.GetBase16().c_str(), kon.GetBase16().c_str());
-			}
+			printf("  CPU Core (%d) : %s -> %s \n\n", thId, key.GetBase16().c_str(), tRangeEnd.GetBase16().c_str());
 		}
 		
 		Int km(&key);
@@ -815,7 +805,7 @@ void Rotor::FindKeyCPU(TH_PARAM * ph)
 	// Group Init
 	Int key;// = new Int();
 	Point startP;// = new Point();
-	getCPUStartingKey(tRangeStart, tRangeEnd, key, startP);
+	getCPUStartingKey(tRangeStart, tRangeEnd, key, startP, thId);
 
 	Int* dx = new Int[CPU_GRP_SIZE / 2 + 1];
 	Point* pts = new Point[CPU_GRP_SIZE];
@@ -834,7 +824,7 @@ void Rotor::FindKeyCPU(TH_PARAM * ph)
 	while (!endOfSearch) {
 
 		if (ph->rKeyRequest) {
-			getCPUStartingKey(tRangeStart, tRangeEnd, key, startP);
+			getCPUStartingKey(tRangeStart, tRangeEnd, key, startP, thId);
 			ph->rKeyRequest = false;
 		}
 
@@ -1227,7 +1217,7 @@ void Rotor::getGPUStartingKeys(Int & tRangeStart, Int & tRangeEnd, int groupSize
 			}
 		}
 		
-		for (int i = 0; i < nbThread + 1; i++) {
+		for (int i = 0; i < nbThread; i++) {
 			gpucores = i;
 			tRangeEnd2.Set(&tRangeStart2);
 			tRangeEnd2.Add(&tRangeDiff);
@@ -1235,7 +1225,7 @@ void Rotor::getGPUStartingKeys(Int & tRangeStart, Int & tRangeEnd, int groupSize
 			keys[i].Set(&tRangeStart2);
 			if (i == 0) {
 				if (display > 0) {
-					printf("  Thread 00000 : %s ->", keys[i].GetBase16().c_str());
+					printf("  Thread 0 : %s ->", keys[i].GetBase16().c_str());
 				}
 			}
 			Int dobb;
@@ -1246,25 +1236,8 @@ void Rotor::getGPUStartingKeys(Int & tRangeStart, Int & tRangeEnd, int groupSize
 
 				if (i == 0) {
 					printf(" %s \n", dobb.GetBase16().c_str());
-				}
-				if (i == 1) {
-					printf("  Thread 00001 : %s -> %s \n", tRangeStart2.GetBase16().c_str(), dobb.GetBase16().c_str());
-				}
-				if (i == 2) {
-					printf("  Thread 00002 : %s -> %s \n", tRangeStart2.GetBase16().c_str(), dobb.GetBase16().c_str());
-				}
-				if (i == 3) {
-					printf("  Thread 00003 : %s -> %s \n", tRangeStart2.GetBase16().c_str(), dobb.GetBase16().c_str());
-					printf("           ... : \n");
-				}
-				if (i == nbThread - 2) {
+				} else {
 					printf("  Thread %d : %s -> %s \n", i, tRangeStart2.GetBase16().c_str(), dobb.GetBase16().c_str());
-				}
-				if (i == nbThread - 1) {
-					printf("  Thread %d : %s -> %s \n", i, tRangeStart2.GetBase16().c_str(), dobb.GetBase16().c_str());
-				}
-				if (i == nbThread) {
-					printf("  Thread %d : %s -> %s \n\n", i, tRangeStart2.GetBase16().c_str(), dobb.GetBase16().c_str());
 				}
 			}
 			tRangeStart2.Add(&tRangeDiff);
