@@ -26,6 +26,7 @@
 #define MIN(x,y) (((x)<(y))?(x):(y))
 
 Int _ONE((uint64_t)1);
+const char* Int::HEX_CHARSET = "0123456789ABCDEF";
 
 
 // ------------------------------------------------
@@ -55,6 +56,10 @@ Int::Int(uint64_t u64) {
 	CLEAR();
 	bits64[0] = u64;
 
+}
+
+Int::Int(int n, const char* charset, const char* value) {
+	this->SetBaseN(n, charset, value);
 }
 
 // ------------------------------------------------

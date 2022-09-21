@@ -41,10 +41,13 @@ class Int {
 
 public:
 
+	static const char* HEX_CHARSET;
+
 	Int();
 	Int(int64_t i64);
 	Int(uint64_t u64);
 	Int(Int* a);
+	Int(int n, const char* charset, const char* value);
 
 	// Op
 	void Add(uint64_t a);

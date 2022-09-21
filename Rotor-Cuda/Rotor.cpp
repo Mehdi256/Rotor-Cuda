@@ -25,6 +25,22 @@ using namespace std;
 Point Gn[CPU_GRP_SIZE / 2];
 Point _2Gn;
 
+// Both inclusive.
+std::string MIN_PRIV_ETH_STR = "0000000000000000000000000000000000000000000000000000000000000001";
+std::string MAX_PRIV_ETH_STR = "fffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364140";
+
+Int MIN_PRIV_ETH(16, Int::HEX_CHARSET, MIN_PRIV_ETH_STR.c_str());
+Int MAX_PRIV_ETH(16, Int::HEX_CHARSET, MAX_PRIV_ETH_STR.c_str());
+
+void safeRangeEth(Int& safeStart, Int& safeEnd) {
+	if(safeStart.IsLower(&MIN_PRIV_ETH)) {
+		safeStart.Set(&MIN_PRIV_ETH);
+	}
+	if(safeEnd.IsGreater(&MAX_PRIV_ETH)) {
+		safeEnd.Set(&MAX_PRIV_ETH);
+	}
+}
+
 // ----------------------------------------------------------------------------
 
 Rotor::Rotor(const std::string& inputFile, int compMode, int searchMode, int coinType, bool useGpu,
@@ -46,10 +62,16 @@ Rotor::Rotor(const std::string& inputFile, int compMode, int searchMode, int coi
 	this->stroka = stroka;
 	this->searchMode = searchMode;
 	this->coinType = coinType;
-	this->rangeStart.SetBase16(rangeStart.c_str());
-	this->rangeStart8.SetBase16(rangeStart.c_str());
-	this->rhex.SetBase16(rangeStart.c_str());
-	this->rangeEnd.SetBase16(rangeEnd.c_str());
+
+	// According to ETH Specifications
+	Int safeRangeStart(16, Int::HEX_CHARSET, rangeStart.c_str());
+	Int safeRangeEnd(16, Int::HEX_CHARSET, rangeEnd.c_str());
+	safeRangeEth(safeRangeStart, safeRangeEnd);
+
+	this->rangeStart.Set(&safeRangeStart);
+	this->rangeStart8.Set(&safeRangeStart);
+	this->rhex.Set(&safeRangeStart);
+	this->rangeEnd.Set(&safeRangeEnd);
 	this->rangeDiff2.Set(&this->rangeEnd);
 	this->rangeDiff2.Sub(&this->rangeStart);
 	this->rangeDiffbar.Set(&this->rangeDiff2);
@@ -159,10 +181,17 @@ Rotor::Rotor(const std::vector<unsigned char>& hashORxpoint, int compMode, int s
 	this->stroka = stroka;
 	this->searchMode = searchMode;
 	this->coinType = coinType;
-	this->rangeStart.SetBase16(rangeStart.c_str());
-	this->rangeStart8.SetBase16(rangeStart.c_str());
-	this->rhex.SetBase16(rangeStart.c_str());
-	this->rangeEnd.SetBase16(rangeEnd.c_str());
+
+	// According to ETH Specifications
+	Int safeRangeStart(16, Int::HEX_CHARSET, rangeStart.c_str());
+	Int safeRangeEnd(16, Int::HEX_CHARSET, rangeEnd.c_str());
+	safeRangeEth(safeRangeStart, safeRangeEnd);
+	// printf("%s > %s", safeRangeStart.GetBase16().c_str(), safeRangeEnd.GetBase16().c_str());
+
+	this->rangeStart.Set(&safeRangeStart);
+	this->rangeStart8.Set(&safeRangeStart);
+	this->rhex.Set(&safeRangeStart);
+	this->rangeEnd.Set(&safeRangeEnd);
 	this->rangeDiff2.Set(&this->rangeEnd);
 	this->rangeDiff2.Sub(&this->rangeStart);
 	this->rangeDiffcp.Set(&this->rangeDiff2);
@@ -542,6 +571,12 @@ void Rotor::checkSingleAddressETH(Int key, int i, Point p1)
 			nbFoundKey++;
 		}
 	}
+	// else {
+	// 	std::string addr = secp->GetAddressETH(h0);
+	// 	Int currKey(&key);
+	// 	currKey.Add(i);
+	// 	printf("%s %s\n", addr.c_str(), currKey.GetBase10().c_str());
+	// }
 }
 
 // ----------------------------------------------------------------------------
@@ -820,8 +855,10 @@ void Rotor::FindKeyCPU(TH_PARAM * ph)
 
 	ph->hasStarted = true;
 	ph->rKeyRequest = false;
-	
-	while (!endOfSearch) {
+
+	while (key.IsLowerOrEqual(&tRangeEnd) && !endOfSearch) {
+
+		// printf("%s > %s\n", key.GetBase16().c_str(), tRangeEnd.GetBase16().c_str());
 
 		if (ph->rKeyRequest) {
 			getCPUStartingKey(tRangeStart, tRangeEnd, key, startP, thId);
@@ -1504,7 +1541,11 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 		else {
 			params[i].rangeStart.Set(&rangeStart);
 			rangeStart.Add(&rangeDiff);
-			params[i].rangeEnd.Set(&rangeStart);
+			if (nbGPUThread==0 && i == nbCPUThread-1) {
+				params[i].rangeEnd.Set(&rangeEnd);
+			} else {
+				params[i].rangeEnd.Set(&rangeStart);
+			}
 		}
 		
 
@@ -1534,7 +1575,11 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 		else {
 			params[nbCPUThread + i].rangeStart.Set(&rangeStart);
 			rangeStart.Add(&rangeDiff);
-			params[nbCPUThread + i].rangeEnd.Set(&rangeStart);
+			if (i == nbGPUThread-1) {
+				params[nbCPUThread + i].rangeEnd.Set(&rangeEnd);
+			} else {
+				params[nbCPUThread + i].rangeEnd.Set(&rangeStart);
+			}
 		}
 		
 
