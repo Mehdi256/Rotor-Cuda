@@ -240,6 +240,13 @@ const unsigned char *Bloom::get_bf()
 int Bloom::test_bit_set_bit(unsigned char *buf, unsigned int bit, int set_bit)
 {
     unsigned int byte = bit >> 3;
+// TODO
+// Thread 13 "Rotor" received signal SIGSEGV, Segmentation fault.
+// [Switching to Thread 0x7ffeb8f42640 (LWP 180492)]
+// Bloom::test_bit_set_bit (this=0x519150, buf=0x7ffed29c3010 <error: Cannot access memory at address 0x7ffed29c3010>, bit=24906374, set_bit=0) at Bloom.cpp:243
+// 243	    unsigned char c = buf[byte];        // expensive memory access
+// (gdb) 
+
     unsigned char c = buf[byte];        // expensive memory access
     unsigned char mask = 1 << (bit % 8);
 

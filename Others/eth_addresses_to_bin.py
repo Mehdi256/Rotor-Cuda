@@ -5,20 +5,19 @@ def eth_addresses_to_bin(filein, fileout):
     with open(filein) as inf, open(fileout, 'wb') as outf:
         count = 0
         skip = 0
-        for x in inf.readlines():
+        for x in inf:
             x = x.strip()
-            if len(x) == 42:
-                x = x[2:]
-            else:
+            x = x.split()[0]
+            if len(x) != 40:
                 skip += 1
-                print("skipped address:", x)
+                print("skipped address, len:", x)
                 continue
             try:
                 outf.write(bytes.fromhex(x))
                 count += 1
             except:
                 skip += 1
-                print("skipped address:", x)
+                print("skipped address, fromhex:", x)
 
         print('processed :', count, 'addresses', '\nskipped   :', skip, 'addresses', )
 

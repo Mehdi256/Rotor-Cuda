@@ -78,7 +78,7 @@ private:
 	void SetupRanges(uint32_t totalThreads);
 
 	void getCPUStartingKey(Int& tRangeStart, Int& tRangeEnd, Int& key, Point& startP, int thId);
-	void getGPUStartingKeys(Int& tRangeStart, Int& tRangeEnd, int groupSize, int nbThread, Int* keys, Point* p);
+	void getGPUStartingKeys(Int & tRangeStart, Int & tRangeEnd, int groupSize, int nbThread, Int * keys, Int * gpuRangeEnds, Point * p);
 
 	int CheckBloomBinary(const uint8_t* _xx, uint32_t K_LENGTH);
 	bool MatchHash(uint32_t* _h);

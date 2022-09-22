@@ -362,42 +362,36 @@ void Rotor::output(std::string addr, std::string pAddr, std::string pAddrHex, st
 	pthread_mutex_lock(&ghMutex);
 #endif
 
-	FILE* f = stdout;
-	bool needToClose = false;
-
 	if (outputFile.length() > 0) {
-		f = fopen(outputFile.c_str(), "a");
+		FILE* f = fopen(outputFile.c_str(), "a");
 		if (f == NULL) {
 			printf("  Cannot open %s for writing\n", outputFile.c_str());
-			f = stdout;
-		}
-		else {
-			needToClose = true;
+		} else {
+			fprintf(f, "%s\t%s\n", addr.c_str(), pAddrHex.c_str());
+			fclose(f);
 		}
 	}
 
-	if (!needToClose)
-		printf("\n");
-	fprintf(f, "PubAddress: %s\n", addr.c_str());
-	fprintf(stdout, "\n  =================================================================================\n");
-	fprintf(stdout, "  PubAddress: %s\n", addr.c_str());
+	// if (!needToClose)
+	// 	printf("\n");
 
-	if (coinType == COIN_BTC) {
-		fprintf(f, "Priv (WIF): p2pkh:%s\n", pAddr.c_str());
-		fprintf(stdout, "  Priv (WIF): p2pkh:%s\n", pAddr.c_str());
-	}
+	// fprintf(f, "PubAddress: %s\n", addr.c_str());
+	// fprintf(stdout, "\n  =================================================================================\n");
+	// fprintf(stdout, "  PubAddress: %s\n", addr.c_str());
 
-	fprintf(f, "Priv (HEX): %s\n", pAddrHex.c_str());
-	fprintf(stdout, "  Priv (HEX): %s\n", pAddrHex.c_str());
+	// if (coinType == COIN_BTC) {
+		// fprintf(f, "Priv (WIF): p2pkh:%s\n", pAddr.c_str());
+		// fprintf(stdout, "  Priv (WIF): p2pkh:%s\n", pAddr.c_str());
+	// }
 
-	fprintf(f, "PubK (HEX): %s\n", pubKey.c_str());
-	fprintf(stdout, "  PubK (HEX): %s\n", pubKey.c_str());
+	// fprintf(f, "Priv (HEX): %s\n", pAddrHex.c_str());
+	// fprintf(stdout, "  Priv (HEX): %s\n", pAddrHex.c_str());
 
-	fprintf(f, "=================================================================================\n");
-	fprintf(stdout, "  =================================================================================\n");
+	// fprintf(f, "PubK (HEX): %s\n", pubKey.c_str());
+	// fprintf(stdout, "  PubK (HEX): %s\n", pubKey.c_str());
 
-	if (needToClose)
-		fclose(f);
+	// fprintf(f, "=================================================================================\n");
+	// fprintf(stdout, "  =================================================================================\n");
 
 #ifdef WIN64
 	ReleaseMutex(ghMutex);
@@ -1091,7 +1085,7 @@ void Rotor::FindKeyCPU(TH_PARAM * ph)
 
 // ----------------------------------------------------------------------------
 
-void Rotor::getGPUStartingKeys(Int & tRangeStart, Int & tRangeEnd, int groupSize, int nbThread, Int * keys, Point * p)
+void Rotor::getGPUStartingKeys(Int & tRangeStart, Int & tRangeEnd, int groupSize, int nbThread, Int * keys, Int * gpuRangeEnds, Point * p)
 {
 	if (rKey > 0) {
 		
@@ -1221,9 +1215,10 @@ void Rotor::getGPUStartingKeys(Int & tRangeStart, Int & tRangeEnd, int groupSize
 
 		tRangeDiff.Set(&tRangeEnd);
 		tRangeDiff.Sub(&tRangeStart);
-		razn = tRangeDiff;
+		tRangeDiff.AddOne();
 
 		tRangeDiff.Div(&tThreads);
+		tRangeDiff.AddOne();
 		
 		int rangeShowThreasold = 3;
 		int rangeShowCounter = 0;
@@ -1269,6 +1264,9 @@ void Rotor::getGPUStartingKeys(Int & tRangeStart, Int & tRangeEnd, int groupSize
 			dobb.Set(&tRangeStart2);
 			dobb.Add(&tRangeDiff);
 			dobb.Sub(nextt);
+			if (i == nbThread-1) {
+				dobb.Set(&tRangeEnd);
+			}
 			if (display > 0) {
 
 				if (i == 0) {
@@ -1277,6 +1275,7 @@ void Rotor::getGPUStartingKeys(Int & tRangeStart, Int & tRangeEnd, int groupSize
 					printf("  Thread %d : %s -> %s \n", i, tRangeStart2.GetBase16().c_str(), dobb.GetBase16().c_str());
 				}
 			}
+			gpuRangeEnds[i].Set(&dobb);
 			tRangeStart2.Add(&tRangeDiff);
 			Int k(keys + i);
 			k.Add((uint64_t)(groupSize / 2));
@@ -1322,23 +1321,25 @@ void Rotor::FindKeyGPU(TH_PARAM * ph)
 	int nbThread = g->GetNbThread();
 	Point* p = new Point[nbThread];
 	Int* keys = new Int[nbThread];
+	Int* gpuRangeEnds = new Int[nbThread];
 	std::vector<ITEM> found;
 
 	printf("  GPU          : %s\n", g->deviceName.c_str());
 
 	counters[thId] = 0;
 
-	getGPUStartingKeys(tRangeStart, tRangeEnd, g->GetGroupSize(), nbThread, keys, p);
+	getGPUStartingKeys(tRangeStart, tRangeEnd, g->GetGroupSize(), nbThread, keys, gpuRangeEnds, p);
 	ok = g->SetKeys(p);
 
 	ph->hasStarted = true;
 	ph->rKeyRequest = false;
 
 	// GPU Thread
-	while (ok && !endOfSearch) {
+	// 
+	while (keys[nbThread-1].IsLowerOrEqual(&gpuRangeEnds[nbThread-1]) && ok && !endOfSearch) {
 
 		if (ph->rKeyRequest) {
-			getGPUStartingKeys(tRangeStart, tRangeEnd, g->GetGroupSize(), nbThread, keys, p);
+			getGPUStartingKeys(tRangeStart, tRangeEnd, g->GetGroupSize(), nbThread, keys, gpuRangeEnds, p);
 			ok = g->SetKeys(p);
 			ph->rKeyRequest = false;
 		}
@@ -1419,6 +1420,7 @@ void Rotor::FindKeyGPU(TH_PARAM * ph)
 	}
 
 	delete[] keys;
+	delete[] gpuRangeEnds;
 	delete[] p;
 	delete g;
 
@@ -1436,10 +1438,10 @@ void Rotor::FindKeyGPU(TH_PARAM * ph)
 bool Rotor::isAlive(TH_PARAM * p)
 {
 
-	bool isAlive = true;
+	bool isAlive = false;
 	int total = nbCPUThread + nbGPUThread;
 	for (int i = 0; i < total; i++)
-		isAlive = isAlive && p[i].isRunning;
+		isAlive = isAlive || p[i].isRunning;
 
 	return isAlive;
 
@@ -1503,7 +1505,9 @@ void Rotor::SetupRanges(uint32_t totalThreads)
 	threads.SetInt32(totalThreads);
 	rangeDiff.Set(&rangeEnd);
 	rangeDiff.Sub(&rangeStart);
+	rangeDiff.AddOne();
 	rangeDiff.Div(&threads);
+	rangeDiff.AddOne();
 }
 
 // ----------------------------------------------------------------------------
@@ -1517,6 +1521,12 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 	nbCPUThread = nbThread;
 	nbGPUThread = (useGpu ? (int)gpuId.size() : 0);
 	nbFoundKey = 0;
+
+#ifdef WIN64
+	ghMutex = CreateMutex(NULL, FALSE, NULL);
+#else
+	ghMutex = PTHREAD_MUTEX_INITIALIZER;
+#endif
 
 	// setup ranges
 	SetupRanges(nbCPUThread + nbGPUThread);
@@ -1552,11 +1562,9 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 #ifdef WIN64
 		DWORD thread_id;
 		CreateThread(NULL, 0, _FindKeyCPU, (void*)(params + i), 0, &thread_id);
-		ghMutex = CreateMutex(NULL, FALSE, NULL);
 #else
 		pthread_t thread_id;
 		pthread_create(&thread_id, NULL, &_FindKeyCPU, (void*)(params + i));
-		ghMutex = PTHREAD_MUTEX_INITIALIZER;
 #endif
 	}
 
@@ -3316,13 +3324,14 @@ void Rotor::Search(int nbThread, std::vector<int> gpuId, std::vector<int> gridSi
 		lastCount = count;
 		lastGPUCount = gpuCount;
 		t0 = t1;
-		if (should_exit || nbFoundKey >= targetCounter || completedPerc > 100.5)
+		if (should_exit || nbFoundKey >= targetCounter || completedPerc > 101.0) {
 			endOfSearch = true;
+		}
 	}
 
 	free(params);
 
-	}
+}
 
 // ----------------------------------------------------------------------------
 

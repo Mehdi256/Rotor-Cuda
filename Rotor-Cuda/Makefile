@@ -40,18 +40,18 @@ ccap       = $(shell echo $(CCAP) | tr -d '.')
 
 ifdef gpu
 ifdef debug
-CXXFLAGS   = -DWITHGPU -m64  -mssse3 -Wno-write-strings -g -I. -I$(CUDA)/include
+CXXFLAGS   =  -DWITHGPU -march=native -m64  -mssse3 -Wno-write-strings -g -I. -I$(CUDA)/include
 else
-CXXFLAGS   =  -DWITHGPU -m64 -mssse3 -Wno-write-strings -O2 -I. -I$(CUDA)/include
+CXXFLAGS   =  -DWITHGPU -march=native -m64 -mssse3 -Wno-write-strings -O3 -I. -I$(CUDA)/include
 endif
-LFLAGS     = -lgmp -lpthread -L$(CUDA)/lib -lcudart
+LFLAGS     =  -lgmp -lpthread -L$(CUDA)/lib -lcudart
 else
 ifdef debug
-CXXFLAGS   = -m64 -mssse3 -Wno-write-strings -g -I. -I$(CUDA)/include
+CXXFLAGS   =  -march=native -m64 -mssse3 -Wno-write-strings -g -I. -I$(CUDA)/include
 else
-CXXFLAGS   =  -m64 -mssse3 -Wno-write-strings -O2 -I. -I$(CUDA)/include
+CXXFLAGS   =  -march=native -m64 -mssse3 -Wno-write-strings -O3 -I. -I$(CUDA)/include
 endif
-LFLAGS     = -lgmp -lpthread
+LFLAGS     =  -lgmp -lpthread
 endif
 
 #--------------------------------------------------------------------

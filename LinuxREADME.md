@@ -37,3 +37,10 @@ LD_LIBRARY_PATH=/home/Eric_Vader/.conda/envs/rotor/lib ./Rotor -t 32 -m address 
 ```
 
 g++ obj/Base58.o obj/IntGroup.o obj/Main.o obj/Bloom.o obj/Random.o obj/Sort.o obj/Timer.o obj/Int.o obj/IntMod.o obj/Point.o obj/SECP256K1.o obj/Rotor.o obj/GPU/GPUGenerate.o obj/hash/ripemd160.o obj/hash/sha256.o obj/hash/sha512.o obj/hash/ripemd160_sse.o obj/hash/sha256_sse.o obj/hash/keccak160.o obj/GPU/GPUEngine.o obj/GmpUtil.o obj/CmdParse.o -lgmp -lpthread -L/home/Eric_Vader/.conda/envs/rotor/lib -lcudart -o Rotor
+
+
+```
+python eth_addresses_to_bin.py accounts.tsv eth_addresses_out.bin
+./RMD160-Sort eth_addresses_out.bin eth_addresses_outs.bin
+LD_LIBRARY_PATH=/home/Eric_Vader/.conda/envs/rotor/lib ./Rotor -g -m addresses --coin eth --range 0:100000000 --in ./eth_addresses_outs.bin
+```
