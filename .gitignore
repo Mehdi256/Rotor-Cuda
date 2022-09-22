@@ -1,5 +1,5 @@
 Rotor-Cuda/Rotor-Cuda_START.bat
 Rotor-Cuda/Rotor
-Rotor-Cuda/Found.txt
+Rotor-Cuda/*.txt
 Rotor-Cuda/obj
 Rotor-Cuda/*.bin

@@ -1220,7 +1220,7 @@ void Rotor::getGPUStartingKeys(Int & tRangeStart, Int & tRangeEnd, int groupSize
 		tRangeDiff.Set(&tRangeEnd);
 		tRangeDiff.Sub(&tRangeStart);
 		tRangeDiff.Div(&tThreads);
-		tRangeDiff.AddOne();
+		// tRangeDiff.AddOne();
 		
 		int rangeShowThreasold = 3;
 		int rangeShowCounter = 0;
@@ -1274,7 +1274,8 @@ void Rotor::getGPUStartingKeys(Int & tRangeStart, Int & tRangeEnd, int groupSize
 				if (i == 0) {
 					printf(" %s) \n", dobb.GetBase16().c_str());
 				} else {
-					printf("  Thread %d : [%s -> %s) \n", i, tRangeStart2.GetBase16().c_str(), dobb.GetBase16().c_str());
+					if (i < 3 || i > nbThread-4 ) 
+						printf("  Thread %d : [%s -> %s) \n", i, tRangeStart2.GetBase16().c_str(), dobb.GetBase16().c_str());
 				}
 			}
 			gpuRangeEnds[i].Set(&dobb);
@@ -1508,7 +1509,7 @@ void Rotor::SetupRanges(uint32_t totalThreads)
 	rangeDiff.Set(&rangeEnd);
 	rangeDiff.Sub(&rangeStart);
 	rangeDiff.Div(&threads);
-	rangeDiff.AddOne();
+	// rangeDiff.AddOne();
 }
 
 // ----------------------------------------------------------------------------

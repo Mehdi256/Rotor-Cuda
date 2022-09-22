@@ -32,7 +32,7 @@ OBJET = $(addprefix $(OBJDIR)/, \
 endif
 
 CXX        = g++
-CUDA       = /home/Eric_Vader/.conda/envs/rotor
+CUDA       = /usr/local/cuda
 CXXCUDA    = /usr/bin/g++
 NVCC       = $(CUDA)/bin/nvcc
 # nvcc requires joint notation w/o dot, i.e. "5.2" -> "52"
@@ -44,7 +44,7 @@ CXXFLAGS   =  -DWITHGPU -march=native -m64  -mssse3 -Wno-write-strings -g -I. -I
 else
 CXXFLAGS   =  -DWITHGPU -march=native -m64 -mssse3 -Wno-write-strings -O3 -I. -I$(CUDA)/include
 endif
-LFLAGS     =  -lgmp -lpthread -L$(CUDA)/lib -lcudart
+LFLAGS     =  -lgmp -lpthread -L$(CUDA)/lib64 -lcudart
 else
 ifdef debug
 CXXFLAGS   =  -march=native -m64 -mssse3 -Wno-write-strings -g -I. -I$(CUDA)/include

@@ -19,7 +19,7 @@
     ```sh
     $ cd Rotor-Cuda
     $ make gpu=1 CCAP=75 all
-    $ make gpu=1 CCAP=85 all
+    $ make gpu=1 CCAP=86 all
     ```
     <hr>
     FOR RTX 3060, 3070, 3080, 3090, A5000, A6000, A100 - use CCAP=75 (CUDA 11.7)</br>
@@ -44,4 +44,7 @@ python eth_addresses_to_bin.py accounts.tsv eth_addresses_out.bin
 ./RMD160-Sort eth_addresses_out.bin eth_addresses_outs.bin
 LD_LIBRARY_PATH=/home/Eric_Vader/.conda/envs/rotor/lib ./Rotor -g -m addresses --coin eth --range 0:100000000 --in ./eth_addresses_outs.bin
 ./Rotor -t 12 -m addresses --coin eth --range 0:100000000 --in ./eth_addresses_outs.bin
+./Rotor -g -m address --coin eth --range 0:100000000 0x7e5f4552091a69125d5dfcb7b8c2659029395bdf
+./Rotor -g -m addresses --coin eth --range 0:100000000 --in tc.bin 
+xxd -c 20 tc.bin
 ```
