@@ -306,8 +306,8 @@ void Rotor::InitGenratorTable()
 	else {
 
 		if (rKey == 0) {
-			printf("  Global start : %s (%d bit)\n", this->rangeStart.GetBase16().c_str(), this->rangeStart.GetBitLength());
-			printf("  Global end   : %s (%d bit)\n", this->rangeEnd.GetBase16().c_str(), this->rangeEnd.GetBitLength());
+			printf("  Global start : %s (%d bit) - inclusive\n", this->rangeStart.GetBase16().c_str(), this->rangeStart.GetBitLength());
+			printf("  Global end   : %s (%d bit) - exclusive\n", this->rangeEnd.GetBase16().c_str(), this->rangeEnd.GetBitLength());
 			printf("  Global range : %s (%d bit)\n", this->rangeDiff2.GetBase16().c_str(), this->rangeDiff2.GetBitLength());
 
 			if (nbit2 > 0) {
@@ -692,7 +692,7 @@ void Rotor::getCPUStartingKey(Int & tRangeStart, Int & tRangeEnd, Int & key, Poi
 		}
 		key.Set(&tRangeStart);
 		if (display > 0) {
-			printf("  CPU Core (%d) : %s -> %s \n\n", thId, key.GetBase16().c_str(), tRangeEnd.GetBase16().c_str());
+			printf("  CPU Core (%d) : [%s -> %s) \n", thId, key.GetBase16().c_str(), tRangeEnd.GetBase16().c_str());
 		}
 		
 		Int km(&key);
@@ -850,7 +850,7 @@ void Rotor::FindKeyCPU(TH_PARAM * ph)
 	ph->hasStarted = true;
 	ph->rKeyRequest = false;
 
-	while (key.IsLowerOrEqual(&tRangeEnd) && !endOfSearch) {
+	while (key.IsLower(&tRangeEnd) && !endOfSearch) {
 
 		// printf("%s > %s\n", key.GetBase16().c_str(), tRangeEnd.GetBase16().c_str());
 
@@ -1069,6 +1069,10 @@ void Rotor::FindKeyCPU(TH_PARAM * ph)
 		key.Add((uint64_t)CPU_GRP_SIZE);
 		counters[thId] += CPU_GRP_SIZE; // Point
 	}
+	if (display > 0) {
+		printf("  CPU Core (%d) Completed : %d hashes \n", thId, counters[thId]);
+	}
+
 	ph->isRunning = false;
 
 	delete grp;
@@ -1215,8 +1219,6 @@ void Rotor::getGPUStartingKeys(Int & tRangeStart, Int & tRangeEnd, int groupSize
 
 		tRangeDiff.Set(&tRangeEnd);
 		tRangeDiff.Sub(&tRangeStart);
-		tRangeDiff.AddOne();
-
 		tRangeDiff.Div(&tThreads);
 		tRangeDiff.AddOne();
 		
@@ -1257,7 +1259,7 @@ void Rotor::getGPUStartingKeys(Int & tRangeStart, Int & tRangeEnd, int groupSize
 			keys[i].Set(&tRangeStart2);
 			if (i == 0) {
 				if (display > 0) {
-					printf("  Thread 0 : %s ->", keys[i].GetBase16().c_str());
+					printf("  Thread 0 : [%s ->", keys[i].GetBase16().c_str());
 				}
 			}
 			Int dobb;
@@ -1270,9 +1272,9 @@ void Rotor::getGPUStartingKeys(Int & tRangeStart, Int & tRangeEnd, int groupSize
 			if (display > 0) {
 
 				if (i == 0) {
-					printf(" %s \n", dobb.GetBase16().c_str());
+					printf(" %s) \n", dobb.GetBase16().c_str());
 				} else {
-					printf("  Thread %d : %s -> %s \n", i, tRangeStart2.GetBase16().c_str(), dobb.GetBase16().c_str());
+					printf("  Thread %d : [%s -> %s) \n", i, tRangeStart2.GetBase16().c_str(), dobb.GetBase16().c_str());
 				}
 			}
 			gpuRangeEnds[i].Set(&dobb);
@@ -1336,7 +1338,7 @@ void Rotor::FindKeyGPU(TH_PARAM * ph)
 
 	// GPU Thread
 	// 
-	while (keys[nbThread-1].IsLowerOrEqual(&gpuRangeEnds[nbThread-1]) && ok && !endOfSearch) {
+	while (keys[nbThread-1].IsLower(&gpuRangeEnds[nbThread-1]) && ok && !endOfSearch) {
 
 		if (ph->rKeyRequest) {
 			getGPUStartingKeys(tRangeStart, tRangeEnd, g->GetGroupSize(), nbThread, keys, gpuRangeEnds, p);
@@ -1418,7 +1420,7 @@ void Rotor::FindKeyGPU(TH_PARAM * ph)
 		}
 
 	}
-
+	printf("\n\n  GPU %d Completed : %d \n", thId-0x80L, counters[thId]);
 	delete[] keys;
 	delete[] gpuRangeEnds;
 	delete[] p;
@@ -1428,7 +1430,7 @@ void Rotor::FindKeyGPU(TH_PARAM * ph)
 	ph->hasStarted = true;
 	printf("  GPU code not compiled, use -DWITHGPU when compiling.\n");
 #endif
-
+	
 	ph->isRunning = false;
 
 }
@@ -1505,7 +1507,6 @@ void Rotor::SetupRanges(uint32_t totalThreads)
 	threads.SetInt32(totalThreads);
 	rangeDiff.Set(&rangeEnd);
 	rangeDiff.Sub(&rangeStart);
-	rangeDiff.AddOne();
 	rangeDiff.Div(&threads);
 	rangeDiff.AddOne();
 }

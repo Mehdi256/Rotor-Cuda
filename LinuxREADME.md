@@ -43,4 +43,5 @@ g++ obj/Base58.o obj/IntGroup.o obj/Main.o obj/Bloom.o obj/Random.o obj/Sort.o o
 python eth_addresses_to_bin.py accounts.tsv eth_addresses_out.bin
 ./RMD160-Sort eth_addresses_out.bin eth_addresses_outs.bin
 LD_LIBRARY_PATH=/home/Eric_Vader/.conda/envs/rotor/lib ./Rotor -g -m addresses --coin eth --range 0:100000000 --in ./eth_addresses_outs.bin
+./Rotor -t 12 -m addresses --coin eth --range 0:100000000 --in ./eth_addresses_outs.bin
 ```
