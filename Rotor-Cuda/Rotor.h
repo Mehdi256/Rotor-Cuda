@@ -133,7 +133,7 @@ private:
 	int corres;
 	uint8_t* DATA;
 	uint64_t TOTAL_COUNT;
-	uint64_t BLOOM_N;
+	// uint64_t BLOOM_N;
 
 #ifdef WIN64
 	HANDLE ghMutex;

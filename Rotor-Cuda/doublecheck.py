@@ -25,5 +25,5 @@ with open("Found.txt") as found_file:
         addr = bytes.fromhex(addr_str[2:])
         to_check_addrs_set.add(addr)
 
-print(addrs_set - to_check_addrs_set)
-print(to_check_addrs_set - addrs_set)
+print(len(addrs_set - to_check_addrs_set))
+print(len(to_check_addrs_set - addrs_set))

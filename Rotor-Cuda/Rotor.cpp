@@ -140,7 +140,7 @@ Rotor::Rotor(const std::string& inputFile, int compMode, int searchMode, int coi
 		exit(0);
 	}
 
-	BLOOM_N = bloom->get_bytes();
+	// BLOOM_N = bloom->get_bytes();
 	TOTAL_COUNT = N;
 	targetCounter = i;
 	if (coinType == COIN_BTC) {
@@ -1304,7 +1304,7 @@ void Rotor::FindKeyGPU(TH_PARAM * ph)
 	case (int)SEARCH_MODE_MA:
 	case (int)SEARCH_MODE_MX:
 		g = new GPUEngine(secp, ph->gridSizeX, ph->gridSizeY, ph->gpuId, maxFound, searchMode, compMode, coinType,
-			BLOOM_N, bloom->get_bits(), bloom->get_hashes(), bloom->get_bf(), DATA, TOTAL_COUNT, (rKey != 0));
+			bloom->get_bytes(), bloom->get_bits(), bloom->get_hashes(), bloom->get_bf(), DATA, TOTAL_COUNT, (rKey != 0));
 		break;
 	case (int)SEARCH_MODE_SA:
 		g = new GPUEngine(secp, ph->gridSizeX, ph->gridSizeY, ph->gpuId, maxFound, searchMode, compMode, coinType,

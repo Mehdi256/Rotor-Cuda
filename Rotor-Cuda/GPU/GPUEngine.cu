@@ -46,7 +46,7 @@ inline void __cudaSafeCall(cudaError err, const char* file, const int line)
 // ---------------------------------------------------------------------------------------
 
 // mode multiple addresses
-__global__ void compute_keys_mode_ma(uint32_t mode, uint8_t* bloomLookUp, int BLOOM_BITS, uint8_t BLOOM_HASHES,
+__global__ void compute_keys_mode_ma(uint32_t mode, uint8_t* bloomLookUp, uint64_t BLOOM_BITS, uint8_t BLOOM_HASHES,
 	uint64_t* keys, uint32_t maxFound, uint32_t* found)
 {
 
@@ -56,7 +56,7 @@ __global__ void compute_keys_mode_ma(uint32_t mode, uint8_t* bloomLookUp, int BL
 
 }
 
-__global__ void compute_keys_comp_mode_ma(uint32_t mode, uint8_t* bloomLookUp, int BLOOM_BITS, uint8_t BLOOM_HASHES, uint64_t* keys,
+__global__ void compute_keys_comp_mode_ma(uint32_t mode, uint8_t* bloomLookUp, uint64_t BLOOM_BITS, uint8_t BLOOM_HASHES, uint64_t* keys,
 	uint32_t maxFound, uint32_t* found)
 {
 
@@ -86,7 +86,7 @@ __global__ void compute_keys_comp_mode_sa(uint32_t mode, uint32_t* hash160, uint
 }
 
 // mode multiple x points
-__global__ void compute_keys_comp_mode_mx(uint32_t mode, uint8_t* bloomLookUp, int BLOOM_BITS, uint8_t BLOOM_HASHES, uint64_t* keys,
+__global__ void compute_keys_comp_mode_mx(uint32_t mode, uint8_t* bloomLookUp, uint64_t BLOOM_BITS, uint8_t BLOOM_HASHES, uint64_t* keys,
 	uint32_t maxFound, uint32_t* found)
 {
 
@@ -109,7 +109,7 @@ __global__ void compute_keys_comp_mode_sx(uint32_t mode, uint32_t* xpoint, uint6
 // ---------------------------------------------------------------------------------------
 // ethereum
 
-__global__ void compute_keys_mode_eth_ma(uint8_t* bloomLookUp, int BLOOM_BITS, uint8_t BLOOM_HASHES, uint64_t* keys,
+__global__ void compute_keys_mode_eth_ma(uint8_t* bloomLookUp, uint64_t BLOOM_BITS, uint8_t BLOOM_HASHES, uint64_t* keys,
 	uint32_t maxFound, uint32_t* found)
 {
 
