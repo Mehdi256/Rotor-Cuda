@@ -47,4 +47,5 @@ LD_LIBRARY_PATH=/home/Eric_Vader/.conda/envs/rotor/lib ./Rotor -g -m addresses -
 ./Rotor -g -m address --coin eth --range 0:100000000 0x7e5f4552091a69125d5dfcb7b8c2659029395bdf
 ./Rotor -g -m addresses --coin eth --range 0:100000000 --in tc.bin 
 xxd -c 20 tc.bin
+./Rotor -g -m addresses --coin eth --range 0:100000000 --in eth-sep.bin
 ```
