@@ -37,19 +37,20 @@ CXXCUDA    = /usr/bin/g++
 NVCC       = $(CUDA)/bin/nvcc
 # nvcc requires joint notation w/o dot, i.e. "5.2" -> "52"
 ccap       = $(shell echo $(CCAP) | tr -d '.')
+PYBIND_FLAGS = -shared -fPIC $(shell python3 -m pybind11 --includes)
 
 ifdef gpu
 ifdef debug
-CXXFLAGS   =  -DWITHGPU -march=native -m64  -mssse3 -Wno-write-strings -g -I. -I$(CUDA)/include
+CXXFLAGS   =  -DWITHGPU -march=native -m64 -mssse3 -Wno-write-strings -g -I. -I$(CUDA)/include $(PYBIND_FLAGS)
 else
-CXXFLAGS   =  -DWITHGPU -march=native -m64 -mssse3 -Wno-write-strings -O3 -I. -I$(CUDA)/include
+CXXFLAGS   =  -DWITHGPU -march=native -m64 -mssse3 -Wno-write-strings -O3 -I. -I$(CUDA)/include $(PYBIND_FLAGS)
 endif
 LFLAGS     =  -lgmp -lpthread -L$(CUDA)/lib64 -lcudart
 else
 ifdef debug
-CXXFLAGS   =  -march=native -m64 -mssse3 -Wno-write-strings -g -I. -I$(CUDA)/include
+CXXFLAGS   =  -march=native -m64 -mssse3 -Wno-write-strings -g -I. -I$(CUDA)/include $(PYBIND_FLAGS)
 else
-CXXFLAGS   =  -march=native -m64 -mssse3 -Wno-write-strings -O3 -I. -I$(CUDA)/include
+CXXFLAGS   =  -march=native -m64 -mssse3 -Wno-write-strings -O3 -I. -I$(CUDA)/include $(PYBIND_FLAGS)
 endif
 LFLAGS     =  -lgmp -lpthread
 endif
@@ -75,6 +76,9 @@ Rotor: $(OBJET)
 	@echo Making Rotor...
 	$(CXX) $(OBJET) $(LFLAGS) -o Rotor
 
+rotor.so: $(OBJET)
+	$(CXX) $(OBJET) $(LFLAGS) $(PYBIND_FLAGS) -o rotor$(shell python3-config --extension-suffix)
+
 $(OBJET): | $(OBJDIR) $(OBJDIR)/GPU $(OBJDIR)/hash
 
 $(OBJDIR):
@@ -91,3 +95,4 @@ clean:
 	@rm -f obj/*.o
 	@rm -f obj/GPU/*.o
 	@rm -f obj/hash/*.o
+	@rm -rf rotor.so
