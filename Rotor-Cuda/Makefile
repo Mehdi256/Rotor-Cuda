@@ -37,7 +37,9 @@ CXXCUDA    = /usr/bin/g++
 NVCC       = $(CUDA)/bin/nvcc
 # nvcc requires joint notation w/o dot, i.e. "5.2" -> "52"
 ccap       = $(shell echo $(CCAP) | tr -d '.')
+ifdef pybind
 PYBIND_FLAGS = -shared -fPIC $(shell python3 -m pybind11 --includes)
+endif
 
 ifdef gpu
 ifdef debug
@@ -74,10 +76,10 @@ all: Rotor
 
 Rotor: $(OBJET)
 	@echo Making Rotor...
-	$(CXX) $(OBJET) $(LFLAGS) -o Rotor
+	$(CXX) $(OBJET) $(LFLAGS) $(PYBIND_FLAGS) -o Rotor
 
-rotor.so: $(OBJET)
-	$(CXX) $(OBJET) $(LFLAGS) $(PYBIND_FLAGS) -o rotor$(shell python3-config --extension-suffix)
+rotor.so: $(OBJET) $(OBJDIR)/PythonEndings.o
+	$(CXX) $(OBJET) $(OBJDIR)/PythonEndings.o $(LFLAGS) $(PYBIND_FLAGS) -o rotor$(shell python3-config --extension-suffix)
 
 $(OBJET): | $(OBJDIR) $(OBJDIR)/GPU $(OBJDIR)/hash
 
