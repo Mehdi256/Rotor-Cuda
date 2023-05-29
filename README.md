@@ -451,9 +451,13 @@ C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m address --coin eth --
 - To get info about various Nvidia GPU CCAP value see
   https://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards
 
-  ```cd Rotor-Cuda```
+  ```sh
 
-  ```make gpu=1 CCAP=75 all```
+    $ cd Rotor-Cuda 
+
+    $ make gpu=1 CCAP=75 all
+
+    ```
 
 ## License
 - Rotor-Cuda is licensed under GPLv3.
