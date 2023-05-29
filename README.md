@@ -442,23 +442,24 @@ C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m address --coin eth --
 ### Linux
 - Edit the makefile and set up the appropriate CUDA SDK and compiler paths for nvcc. Or pass them as variables to make command.
 
-Install libgmp: sudo apt install -y libgmp-dev
+- Install libgmp: ```sudo apt install -y libgmp-dev```
 
-CUDA       = /usr/local/cuda-11.0
+- CUDA       = /usr/local/cuda-11.0
 
-CXXCUDA    = /usr/bin/g++
+- CXXCUDA    = /usr/bin/g++
 
-To build CPU-only version (without CUDA support):
+- To build CPU-only version (without CUDA support):
 
-$ make all
+  $ make all
 
-To build with CUDA: pass CCAP value according to your GPU compute capability
+- To build with CUDA: pass CCAP value according to your GPU compute capability
 
-To get info about various Nvidia GPU CCAP value see this.
+- To get info about various Nvidia GPU CCAP value see [this site]
+  (https://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards)
 
-$ cd KeyHunt-Cuda
+  ```cd KeyHunt-Cuda```
 
-$ make gpu=1 CCAP=75 all
+  ```make gpu=1 CCAP=75 all```
 
 ## License
 - Rotor-Cuda is licensed under GPLv3.
