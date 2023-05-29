@@ -439,6 +439,29 @@ C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m address --coin eth --
 - Use CUDA 11.7
 - Rename [this file](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Rotor-Cuda20xx.vcxproj) (remove 20xx) from the name and replace the file in the project
 
+### Linux
+Linux
+
+Edit the makefile and set up the appropriate CUDA SDK and compiler paths for nvcc. Or pass them as variables to make command.
+
+Install libgmp: sudo apt install -y libgmp-dev
+
+CUDA       = /usr/local/cuda-11.0
+
+CXXCUDA    = /usr/bin/g++
+
+To build CPU-only version (without CUDA support):
+
+$ make all
+
+To build with CUDA: pass CCAP value according to your GPU compute capability
+
+To get info about various Nvidia GPU CCAP value see this.
+
+$ cd KeyHunt-Cuda
+
+$ make gpu=1 CCAP=75 all
+
 ## License
 - Rotor-Cuda is licensed under GPLv3.
 
