@@ -444,8 +444,11 @@ C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m address --coin eth --
 
 - To build CPU-only version (without CUDA support):
 
+  ```sh
+  
   $ make all
-
+  
+  ```
 - To build with CUDA: pass CCAP value according to your GPU compute capability
 
 - To get info about various Nvidia GPU CCAP value see
