@@ -20,13 +20,8 @@
     $ cd Rotor-Cuda
     $ make gpu=1 CCAP=75 all
     $ make gpu=1 CCAP=86 all
-    ```
-    <hr>
-    FOR RTX 3060, 3070, 3080, 3090, A5000, A6000, A100 - use CCAP=75 (CUDA 11.7)</br>
-    FOR RTX 2070, 2080 - use CCAP=75 (CUDA 11.7)</br>
-    FOR GTX 1060, 1070, 1080 - use CCAP=61 (CUDA 10.2)</br>
-
-```
+    $ make gpu=1 CCAP=89 all
+    
 LD_LIBRARY_PATH=/home/Eric_Vader/.conda/envs/rotor/lib ./Rotor -t 1 -m address --coin eth -r 1 0xfda5c442e76a95f96c09782f1a15d3b58e32404f
 LD_LIBRARY_PATH=/home/Eric_Vader/.conda/envs/rotor/lib ./Rotor -g --gpui 0 --gpux 256,256 -m address --coin eth -r 250 0xfda5c442e76a95f96c09782f1a15d3b58e32404f
 LD_LIBRARY_PATH=/home/Eric_Vader/.conda/envs/rotor/lib ./Rotor -g -m address --coin eth -r 250 0xfda5c442e76a95f96c09782f1a15d3b58e32404f
