@@ -1,4 +1,4 @@
-all: BinSortz
+all: BinSort
 
 BinSort:
 	g++ -O2 -o BinSort BinSort.cpp
