@@ -440,9 +440,7 @@ C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m address --coin eth --
 - Rename [this file](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/Rotor-Cuda20xx.vcxproj) (remove 20xx) from the name and replace the file in the project
 
 ### Linux
-Linux
-
-Edit the makefile and set up the appropriate CUDA SDK and compiler paths for nvcc. Or pass them as variables to make command.
+- Edit the makefile and set up the appropriate CUDA SDK and compiler paths for nvcc. Or pass them as variables to make command.
 
 Install libgmp: sudo apt install -y libgmp-dev
 
