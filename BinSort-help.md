@@ -1,6 +1,11 @@
 ## For Linux
 - Open BinSort Folder
+```sh
 
-  $cd BinSort ```sudo apt install -y libgmp-dev```
+    $ cd Rotor-Cuda 
+
+    $ make gpu=1 CCAP=75 all
+
+    ```
   
-  $```make```
+  
