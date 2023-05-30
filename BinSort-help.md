@@ -1,5 +1,6 @@
 ## For Linux
 - Open BinSort Folder
+  cd BinSort  
   ```sh
-     cd BinSort  sudo apt install -y libgmp-dev                          
+       sudo apt install -y libgmp-dev                          
   
