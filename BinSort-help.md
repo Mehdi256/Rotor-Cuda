@@ -6,7 +6,3 @@
     $ sudo apt install -y libgmp-dev
     
     $ make
-
-     
-  
-  
