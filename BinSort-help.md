@@ -37,7 +37,7 @@
 
 - Downloading the fresh database of ethereum addresses
 
-(https://t.me/Blockchain_BTC_ETH_DUMPS)
+  (t.me/Blockchain_BTC_ETH_DUMPS)
 
 - Use Python: ```python eth_addresses_to_bin.py eth_addresses_in.txt eth_addresses_out.bin```
 
