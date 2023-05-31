@@ -20,14 +20,8 @@
 - Now move the ' h160_sorted.bin ' to Linux folder
 
  ## For Windows
- 
- - Use Python: ```python addresses_to_hash160.py addresses.txt hax160.bin```
-
-- if there is no python Windows: ```b58dec.exe addresses.txt hex160.bin```
-
-- Next, you need to sort the base hex160.bin
-
-- CMD: ```BinSort.exe 20 hex160.bin hex160sorted.bin```
+ - Open BinSort Folder
+ - CMD: ```BinSort.exe 20 hash160_out.bin h160_sorted.bin```
 
 - Or another program CMD: ```RMD160-Sort.exe hex160.bin hex160sorted.bin```
 
