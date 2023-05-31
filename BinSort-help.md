@@ -25,21 +25,11 @@
 
 - Or another program CMD: ```RMD160-Sort.exe hash160_out.bin h160_sorted.bin```
 
-## How to create a base of Ethereum addresses 
-
-- Downloading the fresh database of ethereum addresses
-
-  (t.me/Blockchain_BTC_ETH_DUMPS)
-
-- Use Python: ```python eth_addresses_to_bin.py eth_addresses_in.txt eth_addresses_out.bin```
-
-- Next, you need to sort the base eth_addresses_out.bin
+- ETH Addresses : 
 
 - CMD: ```BinSort.exe 20 eth_addresses_out.bin eth_addresses_sotrted.bin```
 
 - Or another program CMD: ```RMD160-Sort.exe eth_addresses_out.bin eth_addresses_sorted.bin```
-
-- For the test, you can use a ready-made base [puzzle_1_37_addresses_eth_sorted.bin](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/puzzle_1_37_addresses_eth_sorted.bin)
 
 ## Good luck
    
