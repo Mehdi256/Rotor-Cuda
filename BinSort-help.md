@@ -47,32 +47,5 @@
 
 - For the test, you can use a ready-made base [puzzle_1_37_addresses_eth_sorted.bin](https://github.com/phrutis/Rotor-Cuda/blob/main/Others/puzzle_1_37_addresses_eth_sorted.bin)
 
-## How to create a base of Public keys for Multi X Points mode
-
-- Downloading the fresh database of addresses [here](https://blockchair.com/dumps)
-
-- We take Legacy addresses starting with 1xxx... from the base and create a list addresses.txt
-
-- Use Python: ```Pub-from-blockchain.py``` (addresses.txt file is created pubkeys.txt) (speed limit 50 address in 60 sek)
-
-- Or manually use the link [https://blockchain.info/q/pubkeyaddr/1P5ZEDWTKTFGxQjZphgWPQUpe554WKDfHQ](https://blockchain.info/q/pubkeyaddr/1P5ZEDWTKTFGxQjZphgWPQUpe554WKDfHQ)
-
-- Since the search is compressed, public keys starting with 02 and 03 are suitable for it. 
-
-- You can use public keys from Uncompressed addresses 04 (128 characters). The script converts them to a compressed format.
-
-- If the program finds such a public key, it will give a compressed address. Using the found private key, generate a positive uncompressed address
-
-- Convert public keys (02,03,04) use Python: ```python pubkeys_to_xpoint.py pubkeys_in.txt xpoints_out.bin```
-
-- Make sure to sort the base CMD: ```BinSort.exe 32 xpoints_out.bin Xpoints_Sorted.bin```
-    
-
-    
-    
-    
-    
-    
-
-  
+## Good luck
    
