@@ -2,14 +2,14 @@
 ![alt text](x.jpg "Rotor-Cuda")
 
 1. Install libgmp-dev
-2. Install CUDA 11.7
+2. Install CUDA 11.0
  
  - Or pass them as variables to `make` command.
  - Install libgmp: ```sudo apt install -y libgmp-dev```
 
 
     ```make
-    CUDA       = /usr/local/cuda-11.7
+    CUDA       = /usr/local/cuda-11.0
     CXXCUDA    = /usr/bin/g++
     ```
  - To build CPU-only version (without CUDA support):
@@ -18,10 +18,8 @@
     ```
  - To build with CUDA: pass CCAP value according to your GPU compute capability
     ```sh
-    
     $ cd Rotor-Cuda
     $ make gpu=1 CCAP=75 all
-    $ make gpu=1 CCAP=86 all
     ```
     
     LD_LIBRARY_PATH=/home/Eric_Vader/.conda/envs/rotor/lib ./Rotor -t 1 -m address --coin eth -r 1.   0xfda5c442e76a95f96c09782f1a15d3b58e32404f
