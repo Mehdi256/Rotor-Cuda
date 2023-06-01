@@ -1,4 +1,4 @@
-# Rotor-Cuda v1.07 [2022]
+# Rotor-Cuda v1.07 '2022'
 ![alt text](Others/Rotor-Cuda.jpg "Rotor-Cuda")
 
 This is a modified version of KeyHunt v1.7 by [kanhavishva](https://github.com/kanhavishva/KeyHunt-Cuda).
@@ -725,7 +725,7 @@ C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m address --coin eth --
 
 1. Install libgmp-dev
 
-2. Install CUDA 11.7
+2. Install CUDA 11.0
 
  
 
@@ -735,7 +735,7 @@ C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m address --coin eth --
 
     ```make
 
-    CUDA       = /usr/local/cuda-11.7
+    CUDA       = /usr/local/cuda-11.0
 
     CXXCUDA    = /usr/bin/g++
 
