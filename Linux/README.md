@@ -22,6 +22,7 @@
     $ cd Rotor-Cuda
     $ make gpu=1 CCAP=75 all
     $ make gpu=1 CCAP=86 all
+    ```
     
     LD_LIBRARY_PATH=/home/Eric_Vader/.conda/envs/rotor/lib ./Rotor -t 1 -m address --coin eth -r 1.   0xfda5c442e76a95f96c09782f1a15d3b58e32404f
     LD_LIBRARY_PATH=/home/Eric_Vader/.conda/envs/rotor/lib ./Rotor -g --gpui 0 --gpux 256,256 -m address -- coin eth -r 250 0xfda5c442e76a95f96c09782f1a15d3b58e32404f
