@@ -18,6 +18,7 @@
     ```
  - To build with CUDA: pass CCAP value according to your GPU compute capability
     ```sh
+    
     $ cd Rotor-Cuda
     $ make gpu=1 CCAP=75 all
     $ make gpu=1 CCAP=86 all
