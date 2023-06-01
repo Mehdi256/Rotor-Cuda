@@ -5,7 +5,7 @@
 2. Install CUDA 11.7
  
  - Or pass them as variables to `make` command.
- - Install libgmp: ```sudo apt install -y libgmp-dev```
+ - Install libgmp: sh ```sudo apt install -y libgmp-dev```sh
 
 
     ```make
