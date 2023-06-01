@@ -1,5 +1,5 @@
 ## Rotor-Cuda Linux 
-![alt text](Linux/Linux.jpg)
+![alt text](Rotor-Cuda/Linux/Linux.jpg)
 
 1. Install libgmp-dev
 2. Install CUDA 11.7
