@@ -1,1 +1,1 @@
-![alt text](puzzle.jpg "Rotor-Cuda")
+![alt text](z.jpg "Rotor-Cuda")
