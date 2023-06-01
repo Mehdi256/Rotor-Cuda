@@ -456,11 +456,11 @@ C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m address --coin eth --
 
   ```sh
 
-    $ cd Rotor-Cuda 
+  $ cd Rotor-Cuda 
 
-    $ make gpu=1 CCAP=75 all
+  $ make gpu=1 CCAP=75 all
 
-    ```
+  ```
 
 ## License
 - Rotor-Cuda is licensed under GPLv3.
