@@ -1,4 +1,4 @@
-## Rotor-Cuda Linux 
+# Rotor-Cuda Linux 
 ![alt text](Rotor-Cuda/Linux/Linux.jpg)
 
 1. Install libgmp-dev
