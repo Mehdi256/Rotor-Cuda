@@ -1,4 +1,4 @@
-# Rotor-Cuda v1.07
+# Rotor-Cuda  v1.07
 ![alt text](Others/Rotor-Cuda.jpg "Rotor-Cuda")
 
 This is a modified version of [KeyHunt v1.7](https://github.com/kanhavishva/KeyHunt-Cuda).
@@ -69,7 +69,7 @@ Telegram group [**BTC Hunters**](https://t.me/wif500)
 ```
 C:\Users\user>Rotor-Cuda.exe -t 6 -m addresses --coin BTC --range 1000000:fffffffffffff -i all.bin -n 2
 
-  Rotor-Cuda v1.05 (07.11.2021)
+  Rotor-Cuda v1.07
 
   COMP MODE    : COMPRESSED
   COIN TYPE    : BITCOIN
@@ -115,7 +115,7 @@ C:\Users\user>Rotor-Cuda.exe -t 6 -m addresses --coin BTC --range 1000000:ffffff
 
 ### Example continuation from Rotor-Cuda_Continue.bat
 ```
-Rotor-Cuda v1.05 (07.11.2021)
+Rotor-Cuda v1.07
 
   COMP MODE    : COMPRESSED
   COIN TYPE    : BITCOIN
@@ -165,7 +165,7 @@ Rotor-Cuda v1.05 (07.11.2021)
 ```
 C:\Users\user>Rotor-Cuda.exe -t 6 -m addresses --coin BTC -i all.bin -r 1 -n 253 -z 254
 
-  Rotor-Cuda v1.05 (07.11.2021)
+  Rotor-Cuda v1.07
 
   COMP MODE    : COMPRESSED
   COIN TYPE    : BITCOIN
@@ -246,7 +246,7 @@ C:\Users\user>Rotor-Cuda.exe -t 6 -m addresses --coin BTC -i all.bin -r 1 -n 253
 ```
 C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC --range 8000000000:ffffffffff a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4 -n 2
 
-  Rotor-Cuda v1.05 (07.11.2021)
+  Rotor-Cuda v1.07
 
   COMP MODE    : COMPRESSED
   COIN TYPE    : BITCOIN
@@ -294,7 +294,7 @@ C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC --r
 ```
 C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC --range 8000000000:ffffffffff a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4 -n 2
 
-  Rotor-Cuda v1.05 (07.11.2021)
+  Rotor-Cuda v1.07
 
   COMP MODE    : COMPRESSED
   COIN TYPE    : BITCOIN
@@ -344,7 +344,7 @@ C:\Users\user>goto :loop
 ```
 C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC -r 50 a2efa402fd5268400c77c20e574ba86409ededee7c4020e4b9f0edbee53de0d4 -n 63 -z 64
 
-  Rotor-Cuda v1.05 (07.11.2021)
+  Rotor-Cuda v1.07
 
   COMP MODE    : COMPRESSED
   COIN TYPE    : BITCOIN
@@ -369,7 +369,7 @@ C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoint --coin BTC -r 
 ```
 Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoints --coin BTC -r 100 --range 7777777777:8888888888 -i Pub01.bin
 
-  Rotor-Cuda v1.05 (07.11.2021)
+  Rotor-Cuda v1.07
 
   COMP MODE    : COMPRESSED
   COIN TYPE    : BITCOIN
@@ -411,7 +411,7 @@ Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m xpoints --coin BTC -r 100 --range 7
 ```
 C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m address --coin eth --range 1:1fffffffffffffff -d 0 0xfda5c442e76a95f96c09782f1a15d3b58e32404f
 
-  Rotor-Cuda v1.05 (07.11.2021)
+  Rotor-Cuda v1.07
 
   COIN TYPE    : ETHEREUM
   SEARCH MODE  : Single Address
@@ -472,3 +472,12 @@ C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m address --coin eth --
   ALL THE CODES, PROGRAM AND INFORMATION ARE FOR EDUCATIONAL PURPOSES ONLY. USE IT AT YOUR OWN RISK. THE         DEVELOPER WILL NOT BE RESPONSIBLE FOR ANY LOSS, DAMAGE OR CLAIM ARISING FROM USING THIS PROGRAM.
 
 ## Good luck hunting
+
+
+
+
+
+
+
+
+
