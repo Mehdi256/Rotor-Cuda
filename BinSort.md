@@ -15,7 +15,6 @@
   ```sh
  
     $ ./BinSort 20 hash160_out.bin h160_sorted.bin
-    
     ```
 - Now move the ```h160_sorted.bin``` to Linux folder
 
