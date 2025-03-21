@@ -466,7 +466,7 @@ C:\Users\user>Rotor-Cuda.exe -g --gpui 0 --gpux 256,256 -m address --coin eth --
 - Rotor-Cuda is licensed under GPLv3.
 
 ## Donation
-- BTC: bc1qh2mvnf5fujg93mwl8pe688yucaw9sflmwsukz9
+- BTC: bc1qdfaj5zyvfkr7wtzaa72vqxzztpl2tz7g5zk5ug
 
 ## __Disclaimer__
   ALL THE CODES, PROGRAM AND INFORMATION ARE FOR EDUCATIONAL PURPOSES ONLY. USE IT AT YOUR OWN RISK. THE         DEVELOPER WILL NOT BE RESPONSIBLE FOR ANY LOSS, DAMAGE OR CLAIM ARISING FROM USING THIS PROGRAM.
