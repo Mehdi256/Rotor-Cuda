@@ -4,7 +4,7 @@
 This is a modified version of [KeyHunt v1.7](https://github.com/kanhavishva/KeyHunt-Cuda).
 A lot of gratitude to all the developers whose codes has been used here.
 
-Telegram group [**BTC Hunters**](https://t.me/wif500)
+Telegram group [**CryptoCrackers**](https://t.me/CryptoCrackersUK)
 
 ## Changes:
 - Default Random 95% (252-256) bit + 5% (248-252) bit
