@@ -83,7 +83,7 @@ void Bloom::print()
     //printf(" (%u KB, %u MB)\n", KB, MB);
     printf(" (%u MB)\n", MB);
     printf("  Hash funcs   : %d\n\n", _hashes);
-    printf("  Site         : https://github.com/phrutis/Rotor-Cuda \n  Donate       : bc1qh2mvnf5fujg93mwl8pe688yucaw9sflmwsukz9 \n");
+    printf("  Site         : https://github.com/Mehdi256/Rotor-Cuda \n  Donate       : bc1qdfaj5zyvfkr7wtzaa72vqxzztpl2tz7g5zk5ug \n");
 }
 
 
