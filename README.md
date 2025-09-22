@@ -222,8 +222,8 @@ $./Rotor -g --gpui 0,1,2 --gpux 256,256,256,256,256,256 -m address --coin BTC --
   |00:24:09| R : 1250 | 61AE654C8F21375303 | F : 0 | GPU: 10.96 Gk/s | T: 18,874,233,782,272 |
   
   ```
-## Linux
-- No Edit Makefile ( Note: Do not edit the Makefile in this version ) 
+### Linux
+- No Edit Makefile (**Note** : Do not edit the Makefile in this version ) 
 
 - update & Install libgmp: ```sudo apt update` ` `sudo apt install -y libgmp-dev```
 
@@ -235,7 +235,7 @@ $./Rotor -g --gpui 0,1,2 --gpux 256,256,256,256,256,256 -m address --coin BTC --
 
   ```sh
   
-  $ make all
+    make all
   
   ```
 - To build with CUDA (GPU)
@@ -246,13 +246,13 @@ $./Rotor -g --gpui 0,1,2 --gpux 256,256,256,256,256,256 -m address --coin BTC --
 
   ```sh
 
-  $ cd Rotor-Cuda 
+    cd Rotor-Cuda 
 
-  $ make gpu=1 CCAP=75 all     #SM_75
-  
-  $ make gpu=1 CCAP=89 all     #SM_89
-  
-  $ make gpu=1 CCAP=100 all   #SM_100
+    **make gpu=1 CCAP=75 all**     #SM_75
+
+    **make gpu=1 CCAP=89 all**     #SM_89
+
+    **make gpu=1 CCAP=100 all**   #SM_100
 
   ```
 
