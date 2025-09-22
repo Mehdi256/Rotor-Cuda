@@ -10,9 +10,7 @@ Telegram  **https://t.me/CryptoCrackersUK**
 ## Changes :
 - Default Random 95% (252-256) bit + 5% (248-252) bit
 - Random in a given bit range (1-256)
-- Random between given bit ranges -n ? -z ?
-- Random between the specified special for Puzzle --range 400000000:7ffffffff
-- Time until the end of the search [years days hours minutes seconds] (max 300 years)
+- Random between given bit ranges -n ? -z ? 
 - Parameter -d 0 expert mode min. information (good for many GPUs)
 - Automatic creation of Rotor-Cuda_START.bat with the specified cmd parameters 
 - Continuation of the search in the range, from the last checkpoint 
