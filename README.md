@@ -51,13 +51,13 @@ Telegram  **https://t.me/CryptoCrackersUK**
 - Random: ```./Rotor -g --gpui 0 --gpux 256,256 -m address --coin eth --range 8000000:fffffff -r 5 0xfda5c442e76a95f96c09782f1a15d3b58e32404f```
 
 
-  |      GPU      |     Speed     |   Grid Size   |
+  |    GPU card   |     Speed     |   Grid Size   |
   |---------------|:-------------:|---------------|
   |   Tesla  T4   |   600 Mkeys   |    128×256    |
   |   RTX  3090   |   2.4 Gkeys   |    256×256    |
   |   RTX  4090   |   3.5 Gkeys   |    256×512    |
   |   RTX  5090   |   4.3 Gkeys   |    512×512    |
-  |   RTX 60      |   ??? Gkeys   |     x . y     |
+  |   RTX  60xx   |   ??? Gkeys   |     x . y     |
 
 
 ---
