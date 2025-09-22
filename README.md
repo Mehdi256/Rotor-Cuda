@@ -225,7 +225,7 @@ $./Rotor -g --gpui 0,1,2 --gpux 256,256,256,256,256,256 -m address --coin BTC --
 # Linux
 - No Edit Makefile ( **Note** : Do not edit the Makefile in this version ) 
 
-- update & Install libgmp: ```sudo apt update` ` `sudo apt install -y libgmp-dev```
+- update & Install libgmp: **sudo apt update**  **sudo apt install -y libgmp-dev**
 
 - CUDA       = /usr/local/cuda-11.0
 
@@ -252,7 +252,7 @@ $./Rotor -g --gpui 0,1,2 --gpux 256,256,256,256,256,256 -m address --coin BTC --
 
     make gpu=1 CCAP=89 all     #SM_89
 
-    *make gpu=1 CCAP=100 all*   #SM_100
+    make gpu=1 CCAP=100 all   #SM_100
 
   ```
 
