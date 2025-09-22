@@ -57,7 +57,7 @@ Telegram  **https://t.me/CryptoCrackersUK**
   |   RTX  3090   |   1.4 Gkeys   |    256×256    |
   |   RTX  4090   |   3.2 Gkeys   |    256×512    |
   |   RTX  5090   |   4.7 Gkeys   |    512×512    |
-  |   RTX  60xx   |   ??? Gkeys   |    xx , xx    |
+  |   RTX  60xx   |   ??? Gkeys   |    xxxxxxx    |
 
 
 ---
@@ -223,7 +223,7 @@ $./Rotor -g --gpui 0,1,2 --gpux 256,256,256,256,256,256 -m address --coin BTC --
   
   ```
 # Linux
-- No Edit Makefile ( **⚡Note** : Do not edit the Makefile in this version ) 
+- No Edit Makefile (**🔷Note** : Do not edit the Makefile in this version ) 
 
 - update & Install libgmp: **sudo apt update**```**sudo apt install -y libgmp-dev**
 
