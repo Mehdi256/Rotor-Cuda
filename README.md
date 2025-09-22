@@ -248,11 +248,11 @@ $./Rotor -g --gpui 0,1,2 --gpux 256,256,256,256,256,256 -m address --coin BTC --
 
     cd Rotor-Cuda 
 
-    make gpu=1 CCAP=75 all  ```SM_75```
+    make gpu=1 CCAP=75 all     [SM_75]
 
-    make gpu=1 CCAP=89 all     #SM_89
+    make gpu=1 CCAP=89 all     [SM_89]
 
-    make gpu=1 CCAP=100 all   #SM_100
+    make gpu=1 CCAP=100 all   [SM_100]
 
   ```
 
