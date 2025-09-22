@@ -138,7 +138,7 @@ $./Rotor -g --gpui 0 --gpux 256,256 -m address --coin BTC --range 100
   |00:00:27| R : 17 | 17E00605C5 | F : 1 | GPU: 3.57 Gk/s | T: 96,099,893,248 |   
 
 ```
-### Range Scan with Multi Addresses : 
+### Range Scan with Multi Address : 
 ```
 $./Rotor -g --gpui 0 --gpux 256,256 -m addresses --coin BTC --range 1000000000:1fffffffff -r 5 -i Puzzles_h160.bin
 
