@@ -1,4 +1,4 @@
- Rotoor-Cuda  v2.0
+# Rotor-Cuda  v2.0
 ![alt text](Linux.jpg "Rotor-Cuda")
 
 This is a modified version of KeyHunt v1.7 ... 
@@ -44,7 +44,7 @@ Telegram  **https://t.me/CryptoCrackersUK**
 ---
 ### GPU ETHEREUM Multi Address mode :
 - Range: ```./Rotor -g --gpui 0 --gpux 256,256 -m addresses --coin eth --range 400000000:7ffffffff -i eth.bin```
-- Random: ```./Rotor -g --gpui 0 --gpux 256,256 -m addresses --coin eth -r 5 -i eth.bin```
+- Random: ```./Rotor -g --gpui 0 --gpux 256,256 -m addresses --ethnn eth -r 5 -i eth.bin```
 ---
 ### GPU ETHEREUM Single Addres mode :
 - Range: ```./Rotor -g --gpui 0 --gpux 256,256 -m address --coin eth --range 8000000:fffffff 0xfda5c442e76a95f96c09782f1a15d3b58e32404f```
