@@ -29,8 +29,7 @@ Telegram  **https://t.me/CryptoCrackersUK**
 - **-z ?** (end random range must be greater than -n value) example: -n 252 -z 256
 - Random for search [puzzle](https://privatekeys.pw/puzzles/bitcoin-puzzle-tx) 71 example:
 
-- ```./Rotor -g --gpui 0 --gpux 256,256 -m address --coin BTC -r 5 --range 400000000000000000:7fffffffffffffffff 1PWo3JeB9jrGwfHDNpdGK54CRas7fsVzXU```
-- If you know that your parameters are correct, use the expert mode -d 0 If you are using many GPUs use -d 0 for convenience 
+- ```./Rotor -g --gpui 0 --gpux 256,256 -m address --coin BTC -r 5 --range 400000000000000000:7fffffffffffffffff 1PWo3JeB9jrGwfHDNpdGK54CRas7fsVzXU``` 
 - If your GPU is weaker than RTX 1080 or the driver crashes. Remove **--gpux 256,256** from the row the grid will be auto-assigned
 ---
 ### GPU Bitcoin Multi Address mode :
