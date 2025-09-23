@@ -46,9 +46,9 @@ Telegram  **https://t.me/CryptoCrackersUK**
 - Range: ```./Rotor -g --gpui 0 --gpux 256,256 -m address --coin eth --range 8000000:fffffff 0xfda5c442e76a95f96c09782f1a15d3b58e32404f```
 - Random: ```./Rotor -g --gpui 0 --gpux 256,256 -m address --coin eth --range 8000000:fffffff -r 5 0xfda5c442e76a95f96c09782f1a15d3b58e32404f```
 
- ****🕹Do not use non-standard values ​​for Grid size.They must be a multiple of 32****
+****🕹Do not use non-standard values ​​for Grid size.They must be a multiple of 32****
 
-  |    GPU card   |     Speed     |   Grid size   | 
+- |    GPU card   |     Speed     |   Grid size   | 
   |---------------|:-------------:|---------------|
   |   Tesla  T4   |   600 Mkeys   |    128×256    |
   |   RTX  3090   |   1.4 Gkeys   |    256×256    |
