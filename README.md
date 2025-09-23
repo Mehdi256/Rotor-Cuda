@@ -54,7 +54,7 @@ Telegram  **https://t.me/CryptoCrackersUK**
   |   RTX  3090   |   1.4 Gkeys   |    256×256    |
   |   RTX  4090   |   3.2 Gkeys   |    256×512    |
   |   RTX  5090   |   4.7 Gkeys   |    512×512    |
-  |   RTX  60xx   |   ??? Gkeys   |     xxxxxx    |
+  |   RTX  60xx   |   ??? Gkeys   |    xxx.xxx    |
 
 
 ---
