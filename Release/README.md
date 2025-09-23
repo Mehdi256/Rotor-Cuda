@@ -14,4 +14,5 @@ RTX 4080   4090   4500   Tesla L40
 
 RTX 5060   5070   5080   5090
 
-## sudo chmod +x Rotor-v2-xxxx
+
+## sudo chmod +x Rotor-v2-xx
