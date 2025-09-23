@@ -48,13 +48,13 @@ Telegram  **https://t.me/CryptoCrackersUK**
 
 ****🕹Do not use non-standard values ​​for Grid size.They must be a multiple of 32****
 
- |    GPU card   |     Speed     |   Grid size   | 
- |---------------|:-------------:|---------------|
- |   Tesla  T4   |   600 Mkeys   |    128×256    |
- |   RTX  3090   |   1.4 Gkeys   |    256×256    |
- |   RTX  4090   |   3.2 Gkeys   |    256×512    |
- |   RTX  5090   |   4.7 Gkeys   |    512×512    |
- |   RTX  60xx   |   ??? Gkeys   |    xxx.xxx    |
+  |    GPU card   |     Speed     |   Grid size   | 
+  |---------------|:-------------:|---------------|
+  |   Tesla  T4   |   600 Mkeys   |    128×256    |
+  |   RTX  3090   |   1.4 Gkeys   |    256×256    |
+  |   RTX  4090   |   3.2 Gkeys   |    256×512    |
+  |   RTX  5090   |   4.7 Gkeys   |    512×512    |
+  |   RTX  60xx   |   ??? Gkeys   |    xxx.xxx    |
 
 
 ---
