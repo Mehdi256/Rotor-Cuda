@@ -220,7 +220,7 @@ $./Rotor -g --gpui 0,1,2 --gpux 256,256,256,256,256,256 -m address --coin BTC --
   
   ```
 # Linux
-- ### 🕹Note : Do not edit the Makefile in this version (**No edit Makefile**)
+- #### 🕹Note : Do not edit the Makefile in this version (No edit Makefile)
 
 - update & Install libgmp: **sudo apt update**```**sudo apt install -y libgmp-dev**
 
@@ -239,7 +239,7 @@ $./Rotor -g --gpui 0,1,2 --gpux 256,256,256,256,256,256 -m address --coin BTC --
 
 - To get info about various Nvidia GPU CCAP value see : 
   
-   https://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards
+   #### https://arnon.dk/matching-sm-architectures-arch-and-gencode-for-various-nvidia-cards
 
   ```sh
 
