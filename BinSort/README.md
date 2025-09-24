@@ -22,9 +22,9 @@
 
 - To convert files ( out.bin ) to sorted files 
 
-      ./BinSort  20  hash160_out.bin  BTC_h160.bin
+      ./BinSort 20 hash160_out.bin BTC_h160.bin
 
-      ./BinSort  20  ETH_out.bin  ETH_sort.bin
+      ./BinSort 20 ETH_out.bin ETH_sort.bin
 
 - Now move Files **BTC_h160.bin**  or  **ETH_sort.bin** to Rotor-Cuda Folder
 
