@@ -1,5 +1,5 @@
 ## How to create a File with the".bin" extension
-- Add File Address ( BTC or ETH ) to BinSort Folder 
+- Add Address file ( BTC or ETH ) to BinSort Folder 
 - Rename the files to ( if ETH ) ETH_addresses.txt """" ( if BTC ) BTC_addresses.txt
 - ~ cd BinSort 
   
