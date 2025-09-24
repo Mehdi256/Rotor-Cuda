@@ -18,7 +18,7 @@
       
        python3  ETH_addresses_to_bin.py  ETH_addresses.txt  ETH_out.bin 
 
-       **Outputs**  ==>  hash160_out.bin  ''''''''  ETH_out.bin
+       Outputs ==> hash160_out.bin  ''''''''  ETH_out.bin
 
 - To convert files ( out.bin ) to sorted files 
 
