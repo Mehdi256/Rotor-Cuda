@@ -224,7 +224,7 @@ $./Rotor -g --gpui 0,1,2 --gpux 256,256,256,256,256,256 -m address --coin BTC --
 
 - update & Install libgmp: **sudo apt update**```**sudo apt install -y libgmp-dev**
 
-- CUDA       = /usr/local/cuda-11.0
+- CUDA       = /usr/local/cuda-10.0 ~ 12.xx  (don't use CUDA 13 yet, only CUDA versions 10_12.xx) 
 
 - CXXCUDA    = /usr/bin/g++
 
