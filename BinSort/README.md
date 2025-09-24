@@ -14,9 +14,9 @@
     ```
 - To convert files ( BTC or ETH.txt ) to h160 : 
 
-       python3  BTC_addr_to_hash160.py  BTC_addresses.txt  hash160_out.bin
+    python3  BTC_addr_to_hash160.py  BTC_addresses.txt  hash160_out.bin
       
-       python3  ETH_addresses_to_bin.py  ETH_addresses.txt  ETH_out.bin 
+    python3  ETH_addresses_to_bin.py  ETH_addresses.txt  ETH_out.bin 
 
        Outputs ==> hash160_out.bin  ''''''''  ETH_out.bin
 
