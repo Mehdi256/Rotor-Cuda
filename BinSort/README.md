@@ -5,11 +5,11 @@
   
   ```sh
 
-      sudo apt install -y libgmp-dev
+  sudo apt install -y libgmp-dev
     
-      sudo pip3 install base58
+  sudo pip3 install base58
     
-      make
+  make
 
     ```
 - To convert files ( BTC or ETH.txt ) to h160 : 
