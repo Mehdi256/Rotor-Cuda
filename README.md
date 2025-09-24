@@ -232,7 +232,7 @@ $./Rotor -g --gpui 0,1,2 --gpux 256,256,256,256,256,256 -m address --coin BTC --
 
   ```sh
   
-    make all
+   make all
   
   ```
 - To build with CUDA (GPU)
@@ -243,13 +243,13 @@ $./Rotor -g --gpui 0,1,2 --gpux 256,256,256,256,256,256 -m address --coin BTC --
 
   ```sh
 
-    cd Rotor-Cuda 
+   cd Rotor-Cuda 
 
-    make gpu=1 CCAP=75 all     [SM_75]
+   make gpu=1 CCAP=75 all     [SM_75]
 
-    make gpu=1 CCAP=89 all     [SM_89]
+   make gpu=1 CCAP=89 all     [SM_89]
 
-    make gpu=1 CCAP=100 all   [SM_100]
+   make gpu=1 CCAP=100 all   [SM_100]
 
   ```
 
