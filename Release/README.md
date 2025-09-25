@@ -1,3 +1,4 @@
+![alt text](RTX.png "Release")
 ## Nvidia RTX 20xx
 
 RTX 2060   2070   2080   Quadro RTX 5000   6000   8000   Tesla T4
@@ -17,6 +18,7 @@ RTX 5060   5070   5080   5090
 ```sh
 sudo chmod +x Rotor-v2-
 ```
+
 
 
 
