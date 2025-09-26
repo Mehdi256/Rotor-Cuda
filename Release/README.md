@@ -17,8 +17,9 @@ RTX 5060   5070   5080   5090
 
 #
 ```sh
-sudo chmod +x Rotor-v2-
+sudo chmod +x Rotor-v2-xxx
 ```
+
 
 
 
